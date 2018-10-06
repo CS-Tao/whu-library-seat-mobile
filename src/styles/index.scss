@@ -1,0 +1,49 @@
+@import './variables.scss';
+@import './flex.scss';
+@import './element-ui.scss';
+
+html, body {
+	width: 100vw;
+}
+
+.main {
+	.header {
+		position: fixed;
+		top: 0;
+		width: 100vw;
+		margin: 0;
+		z-index: 9;
+		background-color: $bg-color-2;
+		height: 100px;
+		padding: 15px 0;
+		box-shadow: 0 1px 2px black;
+		transition: height $transition-header-timeout + 0.3;
+	}
+	.header-unlogin {
+		height: $layout-header-unlogin-h;
+		padding: 0;
+		transition: height $transition-header-timeout;
+	}
+	.body {
+		position: fixed;
+		top: 0;
+		height: $layout-body-h;
+		width: 100vw;
+		margin: 0;
+		z-index: 8;
+		background-color: $bg-color-1;
+	}
+	.footer {
+		position: fixed;
+		bottom: 0;
+		width: 100vw;
+		margin: 0;
+		z-index: 10;
+		background-color: $bg-color-2;
+		height: $layout-footer-h;
+		box-shadow: 0 -1px 2px black;
+  }
+  .footer-unlogin {
+		box-shadow: 0 0 1px $second-color;
+  }
+}
