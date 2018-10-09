@@ -96,7 +96,7 @@ $warp-padding: 2vw;
   }
   .info {
     display: block;
-    margin: 10px 0;
+    margin: 10px 2vw;
     .info-key {
       left: 0;
       color: $text-color;

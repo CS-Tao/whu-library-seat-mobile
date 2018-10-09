@@ -7255,6 +7255,10 @@ stdout-stream@^1.4.0:
   dependencies:
     readable-stream "^2.0.1"
 
+storejs@^1.0.20:
+  version "1.0.20"
+  resolved "http://registry.npm.taobao.org/storejs/download/storejs-1.0.20.tgz#fc896df3154855c51f8b2772ceb0477fe3395594"
+
 stream-browserify@^2.0.1:
   version "2.0.1"
   resolved "http://registry.npm.taobao.org/stream-browserify/download/stream-browserify-2.0.1.tgz#66266ee5f9bdb9940a4e4514cafb43bb71e5c9db"

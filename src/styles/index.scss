@@ -4,6 +4,20 @@
 
 html, body {
 	width: 100vw;
+	height: 100vh;
+	margin: 0;
+}
+
+::-webkit-scrollbar {
+	// width: 5px;
+	// height: 5px;
+	// background-color: $bg-color-highlight;
+	// border-radius: 2px;
+	// &-thumb {
+	// 	background-color: $text-color-lowlight;
+	// 	border-radius: 2px;
+	// }
+	width: 0;
 }
 
 .main {

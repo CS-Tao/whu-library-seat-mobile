@@ -99,7 +99,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/styles/index.scss';
 $warp-width: 90vw;
-$warp-height: 70vh;
+$warp-height: 60vh;
 $warp-padding: 2vw;
 .warp {
   cursor: default!important;
