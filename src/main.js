@@ -10,7 +10,7 @@ import store from './store'
 
 import packageInfo from '../package.json'
 
-import './api/mock'
+// import './api/mock'
 
 Vue.http = Vue.prototype.$http = axios
 Vue.config.productionTip = false
@@ -22,7 +22,8 @@ Vue.openLink = (url) => {
 }
 Vue.prototype.$openLink = Vue.openLink
 
-Vue.prototype.$appVersion = packageInfo.version
+Vue.appVersion = packageInfo.version
+Vue.prototype.$appVersion = Vue.appVersion
 
 new Vue({
   components: { App },
