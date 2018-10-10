@@ -81,10 +81,11 @@ $warp-padding: 2vw;
 .warp {
   width: auto;
   height: auto;
-  margin: 130px ($layout-width - $warp-width)/2 - $warp-padding $layout-footer-h ($layout-width - $warp-width)/2 - $warp-padding;
+  margin: 0 ($layout-width - $warp-width)/2 - $warp-padding 0 ($layout-width - $warp-width)/2 - $warp-padding;
   padding: $warp-padding;
   border: 1px solid $text-color;
   border-radius: 4px;
+  overflow-y: scroll;
   .title {
     display: block;
     margin-left: (140 - $text-size-large * 2);

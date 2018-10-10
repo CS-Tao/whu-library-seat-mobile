@@ -6,6 +6,7 @@ html, body {
 	width: 100vw;
 	height: 100vh;
 	margin: 0;
+	background-color: $bg-color-1;
 }
 
 ::-webkit-scrollbar {
@@ -40,8 +41,8 @@ html, body {
 	}
 	.body {
 		position: fixed;
-		top: 0;
-		height: $layout-body-h;
+		top: 130px;
+		height: calc(94vh - 130px);
 		width: 100vw;
 		margin: 0;
 		z-index: 8;
@@ -54,7 +55,7 @@ html, body {
 		margin: 0;
 		z-index: 10;
 		background-color: $bg-color-2;
-		height: $layout-footer-h;
+		height: 35px;
 		box-shadow: 0 -1px 2px black;
   }
   .footer-unlogin {

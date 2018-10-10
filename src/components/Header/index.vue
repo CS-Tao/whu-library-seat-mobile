@@ -69,7 +69,7 @@
             :class="!working?'login-button':'button-disabled'"
             :icon="working?'el-icon-loading':null"
             :style="working?'width: 110px;':''"
-            @click="login()">
+            @click="validateUser()">
             {{btnText}}
           </el-button>
         </div>
@@ -85,6 +85,8 @@ import settingsForm from './Settings'
 import gitcontentsApi from '@/api/gitcontents.api'
 import usageApi from '@/api/usage.api'
 import libraryRestApi from '@/api/library.api'
+import md5 from 'js-md5'
+import store from '@/nedb'
 
 const emptyMessage = '数据加载失败'
 
@@ -109,7 +111,8 @@ export default {
       'userAccount',
       'userPasswd',
       'hasToken',
-      'userToken'
+      'userToken',
+      'announceViewed'
     ]),
     btnText () {
       return this.working ? '白名单验证' : '登录'
@@ -197,17 +200,18 @@ export default {
               break
             }
           }
+          let invalidateFailedMessage = '对不起，您未在用户白名单中，不能使用本软件。<a style="color:rgb(77, 136, 255);" href="javascript:void(0)" onclick="window.open(\'https://home.cs-tao.cc/whu-library-seat/specification/#申请软件使用权\')">申请权限</a>'
           // 用户验证
           if (userItem === null) {
             this.$store.dispatch('setToken', null)
-            this.showError('对不起，您未在用户白名单中，不能使用本软件，您可以在 [菜单] -> [权限] -> [申请权限] 中了解如何获取权限')
+            this.showError(invalidateFailedMessage)
             this.working = false
             usageApi.loginState(this.userInfo.account, false, 0)
             return false
           } else if (!userItem.status) {
             this.$store.dispatch('setToken', null)
-            this.showError('对不起，您未在用户白名单中，不能使用本软件，您可以在 [菜单] -> [权限] -> [申请权限] 中了解如何获取权限')
-            usageApi.loginState(this.userInfo.account, false, 1, '对不起，您未在用户白名单中，不能使用本软件，您可以在 [菜单] -> [权限] -> [申请权限] 中了解如何获取权限')
+            this.showError(invalidateFailedMessage)
+            usageApi.loginState(this.userInfo.account, false, 1, invalidateFailedMessage)
             this.working = false
             return false
           }
@@ -220,37 +224,39 @@ export default {
           // 组验证
           if (groupItem === null) {
             this.$store.dispatch('setToken', null)
-            this.showError('对不起，您未在用户白名单中，不能使用本软件，您可以在 [菜单] -> [权限] -> [申请权限] 中了解如何获取权限')
-            usageApi.loginState(this.userInfo.account, false, 2, '对不起，您未在用户白名单中，不能使用本软件，您可以在 [菜单] -> [权限] -> [申请权限] 中了解如何获取权限')
+            this.showError(invalidateFailedMessage)
+            usageApi.loginState(this.userInfo.account, false, 2, invalidateFailedMessage)
             this.working = false
             return false
           } else if (!groupItem.status) {
             this.$store.dispatch('setToken', null)
-            this.showError('对不起，您未在用户白名单中，不能使用本软件，您可以在 [菜单] -> [权限] -> [申请权限] 中了解如何获取权限')
-            usageApi.loginState(this.userInfo.account, false, 3, '对不起，您未在用户白名单中，不能使用本软件，您可以在 [菜单] -> [权限] -> [申请权限] 中了解如何获取权限')
+            this.showError(invalidateFailedMessage)
+            usageApi.loginState(this.userInfo.account, false, 3, invalidateFailedMessage)
             this.working = false
             return false
           }
           this.login()
           return true
         } else {
+          this.showInfo('白名单加载失败，开启免验证登录')
           this.login()
           return true
         }
       }).catch(() => {
+        this.showInfo('白名单加载失败，开启免验证登录')
         this.login()
         return true
       })
     },
     login () {
-      // if (this.userInfo.account === null || this.userInfo.account === '') {
-      //   this.showWarning('学号不能为空')
-      //   return
-      // }
-      // if (this.userInfo.passwd === null || this.userInfo.passwd === '') {
-      //   this.showWarning('密码不能为空')
-      //   return
-      // }
+      if (this.userInfo.account === null || this.userInfo.account === '') {
+        this.showWarning('学号不能为空')
+        return
+      }
+      if (this.userInfo.passwd === null || this.userInfo.passwd === '') {
+        this.showWarning('密码不能为空')
+        return
+      }
 
       this.$store.dispatch('setAccount', this.userInfo.account)
       this.$store.dispatch('setPasswd', this.userInfo.passwd)
@@ -259,6 +265,14 @@ export default {
         if (response.data.status === 'success') {
           this.loadRooms(response.data.data.token)
           usageApi.loginState(this.userInfo.account, true, 4)
+          // 检查公告
+          gitcontentsApi.announce().then((response) => {
+            if (response.status === 200) {
+              if (md5(response.data) !== store.get('announceMd5', '') && this.announceViewed) {
+                this.$store.dispatch('setAnnounceViewed', false)
+              }
+            }
+          }).catch(() => {})
         } else {
           this.$store.dispatch('setToken', null)
           this.$message({
@@ -306,7 +320,7 @@ export default {
 .setting-icon {
   position: fixed;
   top: 1rem;
-  left: 85vw;
+  left: calc(95vw - 2rem);
   z-index: 11;
   padding: 0;
   fill: $text-color;
@@ -348,7 +362,7 @@ export default {
       float: right;
       margin: auto;
       cursor: pointer;
-      width: auto;
+      width: 32px;
     }
     .icon-locked {
       color: $button-green;

@@ -1,6 +1,6 @@
 {
-  "name": "whu-library-seat",
-  "version": "1.3.1",
+  "name": "whu-library-seat-mobile",
+  "version": "1.0.0",
   "author": "CS-Tao <whucstao@qq.com>",
   "description": "武汉大学图书馆抢座软件",
   "license": null,
@@ -16,11 +16,12 @@
   "dependencies": {
     "axios": "^0.16.1",
     "element-ui": "^2.4.4",
-    "mint-ui": "^2.2.13",
+    "js-md5": "^0.7.3",
     "mockjs": "^1.0.1-beta3",
     "nedb": "^1.8.0",
     "storejs": "^1.0.20",
     "vue": "^2.3.3",
+    "vue-markdown": "^2.2.4",
     "vue-router": "^2.5.3",
     "vuex": "^2.3.1"
   },

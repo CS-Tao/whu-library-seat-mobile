@@ -24,7 +24,8 @@ export default {
           code,
           message: message || '',
           version: appVersion,
-          time: new Date()
+          time: new Date(),
+          mobile: true
         }
       }).then(() => {}).catch(() => {})
     }
@@ -42,7 +43,8 @@ export default {
           code,
           message: message || '',
           version: appVersion,
-          time: new Date()
+          time: new Date(),
+          mobile: true
         }
       }).then(() => {}).catch(() => {})
     }

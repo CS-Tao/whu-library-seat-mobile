@@ -7,6 +7,22 @@ const urls = {
       },
       regular: /\/user-validation\/validation.json/,
       method: 'get'
+    },
+    // 公告
+    announce: {
+      url () {
+        return '/user-validation/announce-mobile.md'
+      },
+      regular: /\/user-validation\/announce-mobile.md/,
+      method: 'get'
+    },
+    // 移动端检查更新
+    checkUpdateMobile: {
+      url () {
+        return '/user-validation/last-mobile.json'
+      },
+      regular: /\/user-validation\/last-mobile.json/,
+      method: 'get'
     }
   },
   usage: {
