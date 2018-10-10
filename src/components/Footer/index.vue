@@ -117,7 +117,7 @@ export default {
       this.$openLink('https://home.cs-tao.cc/whu-library-seat')
     },
     openFeedBack () {
-      this.$openLink('https://github.com/CS-Tao/whu-library-seat-mobile/issues')
+      this.$openLink('https://github.com/CS-Tao/whu-library-seat-mobile/issues/new')
     },
     logout () {
       this.$emit('iconClicked', 'normal')
