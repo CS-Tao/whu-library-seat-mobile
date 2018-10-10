@@ -1,5 +1,5 @@
 import axios from 'axios'
-import Vue from 'vue'
+import packageInfo from '../../package.json'
 import urls from './urls'
 import store from '@/nedb'
 
@@ -9,7 +9,7 @@ var service = axios.create({
   withCredentials: true
 })
 
-const appVersion = Vue.appVersion
+const appVersion = packageInfo.version
 
 export default {
   // 登录状态
