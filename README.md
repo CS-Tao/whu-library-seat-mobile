@@ -1,19 +1,20 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/qq2adqaxv6vfj7di/branch/master?svg=true)](https://ci.appveyor.com/project/CS-Tao/whu-library-seat/branch/master)
-[![Build Status](https://travis-ci.com/CS-Tao/whu-library-seat.svg?branch=master)](https://travis-ci.com/CS-Tao/whu-library-seat)
-[![license](https://img.shields.io/badge/license-none-yellow.svg)](https://home.cs-tao.cc/whu-library-seat/copyright/)
-[![feedback](https://img.shields.io/badge/feedback-issues-blue.svg)](https://github.com/CS-Tao/whu-library-seat/issues/new)
+[![Build Status](https://www.travis-ci.com/CS-Tao/whu-library-seat-mobile.svg?branch=source)](https://www.travis-ci.com/CS-Tao/whu-library-seat-mobile)
+[![license](https://img.shields.io/badge/license-none-yellow.svg)](https://home.cs-tao.cc/whu-library-seat-mobile/copyright/)
+[![feedback](https://img.shields.io/badge/feedback-issues-blue.svg)](https://github.com/CS-Tao/whu-library-seat-mobile/issues/new)
 
-# whu-library-seat
+# whu-library-seat-mobile
 
->武汉大学图书馆抢座软件
+> 武汉大学图书馆抢座软件 - 移动端
 
 ## 使用说明
 
 ### 文档地址
 
-[https://home.cs-tao.cc/whu-library-seat/](https://home.cs-tao.cc/whu-library-seat/)
+链接：[https://home.cs-tao.cc/whu-library-seat/](https://home.cs-tao.cc/whu-library-seat/)
 
 ### 软件演示
+
+>以桌面端为例
 
 ![软件演示](https://raw.githubusercontent.com/CS-Tao/github-content/master/contents/github/whu-library-seat/full.gif)
 
@@ -21,18 +22,13 @@
 
 ### 最新版本下载
 
-最新版本(包括预览版): [https://github.com/CS-Tao/whu-library-seat/releases/latest](https://github.com/CS-Tao/whu-library-seat/releases/latest)
+- 下载链接
 
-### 稳定版本下载
+  [whu-library-seat-mobile_v1.0.0.apk](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.0.0/whu-library-seat-mobile_v1.0.0.apk)
 
-- Windows
-    - 链接: [whu-library-seat-setup-1.3.1.exe](https://github.com/CS-Tao/whu-library-seat/releases/download/v1.3.1/whu-library-seat-setup-1.3.1.exe)
+- 二维码：
 
-- Mac OS
-    - 链接: [whu-library-seat-1.3.1.dmg](https://github.com/CS-Tao/whu-library-seat/releases/download/v1.3.1/whu-library-seat-1.3.1.dmg)
-
-- Linux
-    - 链接: [whu-library-seat-1.3.1-x86_64.AppImage](https://github.com/CS-Tao/whu-library-seat/releases/download/v1.3.1/whu-library-seat-1.3.1-x86_64.AppImage)
+  ![安卓版本二维码](https://raw.githubusercontent.com/CS-Tao/whu-library-seat/user-validation/last-android-qr.jpg)
 
 ### 安装软件
 
@@ -46,7 +42,7 @@
 
 ### 软件更新
 
-软件启动的时候会自动访问[GitHub Release](https://github.com/CS-Tao/whu-library-seat/releases/latest)检查更新，如果有更新，在软件的左下角会出现更新的按钮
+软件启动的时候会自动访问[这个文件](https://github.com/CS-Tao/whu-library-seat/blob/user-validation/last-mobile.json)检查更新，如果有更新，在软件的左下角会出现下载更新的按钮
 
 # 面向开发者
 
@@ -57,19 +53,13 @@
 如果您希望在本软件的基础上继续添加新的功能，非常欢迎您向本仓库发送 Pull Request
 
 ``` bash
-# 安装依赖
+# 添加依赖
 yarn
 
-# 以开发模式运行
+# 开发模式运行
 yarn dev
 
-# 单元测试和端到端测试
-yarn test
-
-# 对 src 文件夹下的 Vue/Js 文件进行语法检查
-yarn lint
-
-# 生成应用程序
+# 生成网页
 yarn build
 ```
 
