@@ -12,13 +12,13 @@ if (process.env.BUILD_TARGET === 'clean') clean()
 else web()
 
 function clean () {
-  del.sync(['dist/*', '!.gitkeep'])
+  del.sync(['cordova/www/*', '!.gitkeep'])
   console.log(`\n${doneLog}\n`)
   process.exit()
 }
 
 function web () {
-  del.sync(['dist/*', '!.gitkeep'])
+  del.sync(['cordova/www/*', '!.gitkeep'])
   webpack(webConfig, (err, stats) => {
     if (err || stats.hasErrors()) console.log(err)
     console.log(stats.toString({

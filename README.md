@@ -1,4 +1,4 @@
-[![Build Status](https://www.travis-ci.com/CS-Tao/whu-library-seat-mobile.svg?branch=source)](https://www.travis-ci.com/CS-Tao/whu-library-seat-mobile)
+[![Build Status](https://www.travis-ci.com/CS-Tao/whu-library-seat-mobile.svg?branch=master)](https://www.travis-ci.com/CS-Tao/whu-library-seat-mobile)
 [![license](https://img.shields.io/badge/license-none-yellow.svg)](https://home.cs-tao.cc/whu-library-seat-mobile/copyright/)
 [![feedback](https://img.shields.io/badge/feedback-issues-blue.svg)](https://github.com/CS-Tao/whu-library-seat-mobile/issues/new)
 
@@ -14,7 +14,7 @@
 
 ### 软件演示
 
->以桌面端为例
+> 以桌面端为例
 
 ![软件演示](https://raw.githubusercontent.com/CS-Tao/github-content/master/contents/github/whu-library-seat/full.gif)
 
@@ -53,14 +53,29 @@
 如果您希望在本软件的基础上继续添加新的功能，非常欢迎您向本仓库发送 Pull Request
 
 ``` bash
-# 添加依赖
-yarn
+# 添加项目依赖
+yarn && yarn --cwd cordova
 
-# 开发模式运行
+# 全局安装 cordova cli
+npm install -g cordova
+
+# 开发模式运行网页
 yarn dev
 
-# 生成网页
+# 生成网页到 cordova/www 文件夹
 yarn build
+
+# 进入 Cordova 项目文件夹
+cd cordova
+
+# 添加 Android 平台
+cordova platform add android
+
+# 拷贝资源文件
+cordova prepare android
+
+# 打包应用程序(debug 版本)
+cordova build android
 ```
 
 ## 版权声明

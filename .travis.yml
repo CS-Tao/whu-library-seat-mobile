@@ -1,24 +1,59 @@
+sudo: required
+
 language: node_js
 node_js: stable
 
 cache:
   directories:
     - node_modules
+    - cordova/node_modules
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+      - openjdk-7-jdk
+      - lib32stdc++6
+      - lib32z1
+env:
+  CXX=g++-4.8
 
 install:
   - yarn
+  - yarn --cwd cordova
+
+before_script:
+  - mkdir android-sdk
+  - wget -P android-sdk -q https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
+  - tar -xf ./android-sdk/android-sdk_r24.4.1-linux.tgz -C ./android-sdk
+  - echo y | ./android-sdk/android-sdk-linux/tools/android update sdk --no-ui --all --filter platform-tools
+  - echo y | ./android-sdk/android-sdk-linux/tools/android update sdk --no-ui --all --filter build-tools-26.0.2
+  - echo y | ./android-sdk/android-sdk-linux/tools/android update sdk --no-ui --all --filter android-27
+  - echo y | ./android-sdk/android-sdk-linux/tools/android update sdk --no-ui --all --filter extra-android-support
+  - echo y | ./android-sdk/android-sdk-linux/tools/android update sdk --no-ui --all --filter extra-android-m2repository
+  - echo y | ./android-sdk/android-sdk-linux/tools/android update sdk --no-ui --all --filter extra-google-m2repository
+  - export ANDROID_HOME=$PWD/android-sdk/android-sdk-linux
+  - export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/26.0.2
 
 script:
   - yarn build
+  - cd cordova/
+  - npm install -g cordova
+  - cordova platform add android
+  - cordova prepare android
+  - cordova build android
+  - mv ./platforms/android/app/build/outputs/apk/debug/app-debug.apk whu-library-seat-mobile_${TRAVIS_TAG}.apk
+  # - cordova build android --release -- --keystore="release-key.keystore" --alias=whu-library-seat-mobile --storePassword=${STORE_PASSWORD} --password=${STORE_PASSWORD}
+  # - zipalign -v 4 ./platforms/android/app/build/outputs/apk/release/app-release.apk whu-library-seat-mobile_${TRAVIS_TAG}.apk
 
 deploy:
-  provider: pages
+  provider: releases
   skip-cleanup: true
-  github-token: $GH_TOKEN
+  overwrite: true
+  api_key: $GH_TOKEN
+  file: 
+    - "whu-library-seat-mobile_${TRAVIS_TAG}.apk"
   on:
-    branch: source
-  local-dir: dist
-
-branches:
-  only:
-    - source
+    tags: true

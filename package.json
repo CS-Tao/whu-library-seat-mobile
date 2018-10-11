@@ -18,7 +18,6 @@
     "element-ui": "^2.4.4",
     "js-md5": "^0.7.3",
     "mockjs": "^1.0.1-beta3",
-    "nedb": "^1.8.0",
     "storejs": "^1.0.20",
     "vue": "^2.3.3",
     "vue-markdown": "^2.2.4",
