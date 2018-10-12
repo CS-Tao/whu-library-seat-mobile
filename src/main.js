@@ -25,9 +25,12 @@ Vue.prototype.$openLink = Vue.openLink
 Vue.appVersion = packageInfo.version
 Vue.prototype.$appVersion = Vue.appVersion
 
-new Vue({
-  components: { App },
-  router,
-  store,
-  template: '<App/>'
-}).$mount('#app')
+document.addEventListener('deviceready', function () {
+  new Vue({
+    components: { App },
+    router,
+    store,
+    template: '<App/>'
+  }).$mount('#app')
+  window.navigator.splashscreen.hide()
+}, false)
