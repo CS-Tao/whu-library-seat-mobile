@@ -43,9 +43,8 @@ script:
   - npm install -g cordova
   - cordova platform add android
   - cordova prepare android
-  - cordova build android
-  - mv ./platforms/android/app/build/outputs/apk/debug/app-debug.apk whu-library-seat-mobile_${TRAVIS_TAG}.apk
-  # - cordova build android --release -- --keystore="release-key.keystore" --alias=whu-library-seat-mobile --storePassword=${STORE_PASSWORD} --password=${STORE_PASSWORD}
+  - cordova build android --release -- --keystore="release-key.keystore" --alias=whu-library-seat-mobile --storePassword=${STORE_PASSWORD} --password=${STORE_PASSWORD}
+  - mv ./platforms/android/app/build/outputs/apk/release/app-release.apk whu-library-seat-mobile_${TRAVIS_TAG}.apk
   # - zipalign -v 4 ./platforms/android/app/build/outputs/apk/release/app-release.apk whu-library-seat-mobile_${TRAVIS_TAG}.apk
 
 deploy:
