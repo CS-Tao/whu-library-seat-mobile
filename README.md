@@ -1,10 +1,12 @@
 [![Build Status](https://www.travis-ci.com/CS-Tao/whu-library-seat-mobile.svg?branch=master)](https://www.travis-ci.com/CS-Tao/whu-library-seat-mobile)
-[![license](https://img.shields.io/badge/license-none-yellow.svg)](https://home.cs-tao.cc/whu-library-seat-mobile/copyright/)
+[![license](https://img.shields.io/badge/license-none-yellow.svg)](#版权声明)
 [![feedback](https://img.shields.io/badge/feedback-issues-blue.svg)](https://github.com/CS-Tao/whu-library-seat-mobile/issues/new)
 
 # whu-library-seat-mobile
 
-> 武汉大学图书馆抢座软件 - 移动端
+> 武汉大学图书馆抢座软件 - 移动端(Android)
+
+> 桌面端：[https://github.com/CS-Tao/whu-library-seat](https://github.com/CS-Tao/whu-library-seat)
 
 ## 使用说明
 
