@@ -104,7 +104,7 @@ let webConfig = {
   ],
   output: {
     filename: '[name].js',
-    path: path.join(__dirname, 'dist')
+    path: path.join(__dirname, 'cordova/www')
   },
   resolve: {
     alias: {
@@ -127,7 +127,7 @@ if (process.env.NODE_ENV === 'production') {
     new CopyWebpackPlugin([
       {
         from: path.join(__dirname, 'static'),
-        to: path.join(__dirname, 'dist/static'),
+        to: path.join(__dirname, 'cordova/www/static'),
         ignore: ['.*']
       }
     ]),

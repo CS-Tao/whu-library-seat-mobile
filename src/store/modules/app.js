@@ -76,7 +76,7 @@ const app = {
     userInfo: {
       account: store.get('whuSeatUserAccount', null),
       passwd: store.get('whuSeatUserPasswd', null),
-      token: 'test-token'
+      token: null
     },
     seatInfo: {
       date: store.get('whuSeatDate', 0),
@@ -101,7 +101,8 @@ const app = {
       rooms: [],
       dates: []
     },
-    timerInfo: {...defaultTimerInfo}
+    timerInfo: {...defaultTimerInfo},
+    announceViewed: true
   },
   mutations: {
     SET_ACCOUNT: (state, account) => {
@@ -199,6 +200,9 @@ const app = {
       //     state.timerInfo.status = statusEnum.fail
       //   }
       // }
+    },
+    SET_ANNOUNCE_VIEWED: (state, viewed) => {
+      state.announceViewed = viewed
     }
   },
   actions: {
@@ -242,20 +246,24 @@ const app = {
         if (timerInfo.totalTime < 0) {
           timerInfo.totalTime = 0
           timerInfo.timerId = setTimeout(() => {
+            let oppointmentTimeMilli = param.time.getTime()
+            while (oppointmentTimeMilli - (new Date()).getTime() > 0) {}
             param.bookFunc()
-            // param.loginAndBookFunc()
           }, timerInfo.totalTime)
         } else if (timerInfo.totalTime > 5000) {
           timerInfo.loginTimerId = setTimeout(() => {
             param.loginFunc()
           }, timerInfo.totalTime - 5000)
           timerInfo.timerId = setTimeout(() => {
+            let oppointmentTimeMilli = param.time.getTime()
+            while (oppointmentTimeMilli - (new Date()).getTime() > 0) {}
             param.bookFunc()
           }, timerInfo.totalTime)
         } else {
           timerInfo.timerId = setTimeout(() => {
+            let oppointmentTimeMilli = param.time.getTime()
+            while (oppointmentTimeMilli - (new Date()).getTime() > 0) {}
             param.bookFunc()
-            // param.loginAndBookFunc()
           }, timerInfo.totalTime)
         }
         timerInfo.intervalId = setInterval(() => {
@@ -279,6 +287,9 @@ const app = {
     // status: null 代表中途取消, true 代表预约成功, false 代表预约失败
     cancelTimer ({ commit }, status) {
       commit('CANCEL_TIMER', status)
+    },
+    setAnnounceViewed ({ commit }, viewed) {
+      commit('SET_ANNOUNCE_VIEWED', viewed)
     }
   }
 }

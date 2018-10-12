@@ -1,0 +1,9 @@
+bin/*
+!/plugins
+!/plugins/android.json
+!/plugins/fetch.json
+plugins/*
+platforms/*
+www/*
+!.gitkeep
+node_modules/

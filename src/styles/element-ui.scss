@@ -161,15 +161,18 @@
 }
 
 .el-notification {
-  top: $layout-header-h + 1.5vh!important;
-  width: $layout-width - 2vw!important;
-  min-width: $layout-width - 2vw!important;
-  max-width: $layout-width - 2vw!important;
+  top: $layout-header-h + 8vh!important;
+  width: $layout-width - 6vw!important;
+  min-width: $layout-width - 6vw!important;
+  max-width: $layout-width - 6vw!important;
   opacity: 0.9;
   background-color: $bg-color-1;
   border: 1px solid $second-color;
   padding: 14px 26px 14px 13px;
   transition: opacity .3s,transform .3s,left .3s,right .3s,top .4s,bottom .3s,-webkit-transform .3s;
+  &.right {
+    right: 3vw;
+  }
 }
 .el-notification__title {
   color: $text-color-highlight;
@@ -236,4 +239,10 @@
 } 
 .el-table, .el-table__expanded-cell {
   background-color: $bg-color-1;
+}
+.el-badge__content.is-dot {
+  background: $primary-color;
+}
+.el-loading-mask {
+  background: transparent;
 }

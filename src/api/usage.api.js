@@ -1,4 +1,5 @@
 import axios from 'axios'
+import packageInfo from '../../package.json'
 import urls from './urls'
 import store from '@/nedb'
 
@@ -8,7 +9,7 @@ var service = axios.create({
   withCredentials: true
 })
 
-const appVersion = '1.0.0'
+const appVersion = packageInfo.version
 
 export default {
   // 登录状态
@@ -24,7 +25,8 @@ export default {
           code,
           message: message || '',
           version: appVersion,
-          time: new Date()
+          time: new Date(),
+          mobile: true
         }
       }).then(() => {}).catch(() => {})
     }
@@ -42,7 +44,8 @@ export default {
           code,
           message: message || '',
           version: appVersion,
-          time: new Date()
+          time: new Date(),
+          mobile: true
         }
       }).then(() => {}).catch(() => {})
     }
