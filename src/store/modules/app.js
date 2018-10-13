@@ -131,8 +131,8 @@ const app = {
       store.set('whuSeatBeginTime', seatInfo.beginTime)
       store.set('whuSeatEndTime', seatInfo.endTime)
       store.set('whuSeatNum', seatInfo.seatNum)
-      store.set('whuSeatBattery', seatInfo.battery)
-      store.set('whuSeatSun', seatInfo.sun)
+      store.set('whuSeatBattery', seatInfo.battery ? 1 : 0)
+      store.set('whuSeatSun', seatInfo.sun ? 1 : 0)
     },
     SAVE_SETTINGS: (state, settings) => {
       state.settingInfo = settings
@@ -140,8 +140,8 @@ const app = {
       store.set('oppointmentTime', settings.oppointmentTime)
       store.set('availableBeginTime', settings.beginTime)
       store.set('availableEndTime', settings.endTime)
-      store.set('backgroundEnable', settings.backgroundEnable)
-      store.set('usageRecordEnable', settings.usageRecordEnable)
+      store.set('backgroundEnable', settings.backgroundEnable ? 1 : 0)
+      store.set('usageRecordEnable', settings.usageRecordEnable ? 1 : 0)
     },
     RESTORE_SETTINGS: (state) => {
       state.settingInfo = {...defaultSettingInfo}
@@ -149,8 +149,8 @@ const app = {
       store.set('oppointmentTime', defaultSettingInfo.oppointmentTime)
       store.set('availableBeginTime', defaultSettingInfo.beginTime)
       store.set('availableEndTime', defaultSettingInfo.endTime)
-      store.set('backgroundEnable', defaultSettingInfo.backgroundEnable)
-      store.set('usageRecordEnable', defaultSettingInfo.usageRecordEnable)
+      store.set('backgroundEnable', defaultSettingInfo.backgroundEnable ? 1 : 0)
+      store.set('usageRecordEnable', defaultSettingInfo.usageRecordEnable ? 1 : 0)
     },
     SAVE_LIBRARY_INFO: (state, data) => {
       state.libraryInfo = data
