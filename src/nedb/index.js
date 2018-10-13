@@ -4,7 +4,7 @@ var store = {}
 
 store.get = (key, defaultValue) => {
   if (db.has(key)) {
-    return db(key)
+    return db.get(key)
   } else {
     return defaultValue
   }
