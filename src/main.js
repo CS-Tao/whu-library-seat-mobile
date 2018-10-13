@@ -22,9 +22,32 @@ Vue.openLink = (url) => {
 }
 Vue.prototype.$openLink = Vue.openLink
 
+Vue.prototype.$exitApp = () => {
+  navigator.app.exitApp()
+}
+
 Vue.appVersion = packageInfo.version
 Vue.prototype.$appVersion = Vue.appVersion
 
+// 双击退出程序
+var beginDate = null
+document.addEventListener('backbutton', () => {
+  const delay = 2000
+  var endDate = new Date().getTime()
+  if (beginDate !== null && endDate - beginDate < delay) {
+    beginDate = endDate
+    navigator.app.exitApp()
+  } else {
+    beginDate = new Date().getTime()
+    ElementUI.Message({
+      type: 'info',
+      duration: delay,
+      message: '再次点击退出程序'
+    })
+  }
+}, false)
+
+// 加载 Vue 实例
 document.addEventListener('deviceready', function () {
   new Vue({
     components: { App },
