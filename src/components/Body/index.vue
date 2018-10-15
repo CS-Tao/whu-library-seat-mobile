@@ -5,7 +5,7 @@
         <el-form-item>
           <el-row :gutter="0" align="middle">
             <el-col :span="3">
-              <span>学号</span>
+              <span>日期</span>
             </el-col>
             <el-col :span="20" :offset="1">
               <el-select v-model="form.date" placeholder="请选择日期" class="input">
