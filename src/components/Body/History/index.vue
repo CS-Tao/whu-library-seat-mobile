@@ -1,7 +1,7 @@
 <template>
   <div class="flex-row">
     <div class="warp">
-      <el-table class="table" height="320" :data="reservations" border>
+      <el-table class="table" height="99%" :data="reservations" border>
         <el-table-column label="场馆">
           <template slot-scope="scope">
             <span style="display:block;">{{ scope.row.loc }}</span>
@@ -12,7 +12,7 @@
           <template slot-scope="scope">
             <el-button v-if="scope.row.stat === 'RESERVE'" type="primary" class="cancel-button" @click="cancelReserve(scope.$index)">取消预约</el-button>
             <el-button v-else-if="scope.row.stat === 'CHECK_IN'" type="primary" class="cancel-button" @click="stopUse()">终止使用</el-button>
-            <el-button v-else-if="scope.row.stat === 'AWAY'" type="primary" class="cancel-button" @click="stopUse()">终止使用</el-button>
+            <el-button v-else-if="scope.row.stat === 'AWAY'" type="primary" class="cancel-button" @click="stopUse()">释放座位</el-button>
             <el-tag v-else-if="scope.row.stat === 'CANCEL'" class="tag" type="warning">已取消</el-tag>
             <el-tag v-else-if="scope.row.stat === 'COMPLETE'" class="tag" type="success">已履约</el-tag>
             <el-tag v-else-if="scope.row.stat === 'STOP'" class="tag">结束使用</el-tag>
@@ -125,8 +125,8 @@ $warp-padding: 2vw;
 .warp {
   cursor: default!important;
   width: auto;
-  height: auto;
-  margin: 0 ($layout-width - $warp-width)/2 - $warp-padding 0 ($layout-width - $warp-width)/2 - $warp-padding;
+  height: 100%;
+  margin: 2vh 3vw 2vh 3vw;
   padding: $warp-padding;
   border: 1px solid $text-color;
   border-radius: 4px;

@@ -1,8 +1,8 @@
 {
     "name": "cc.cs_tao.whu_library_seat_mobile",
     "displayName": "whu-library-seat-mobile",
-    "version": "1.1.1",
-    "description": "武汉大学抢座软件 - 移动端",
+    "version": "1.1.2",
+    "description": "武汉大学图书馆抢座软件 - 移动端",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"

@@ -57,7 +57,7 @@ $warp-height: 60vh;
 $warp-padding: 2vw;
 .warp {
   width: auto;
-  height: auto;
+  height: 100%;
   margin: 2vh 3vw 2vh 3vw;
   padding: $warp-padding;
   border: 1px solid $text-color;
