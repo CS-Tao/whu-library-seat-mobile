@@ -94,6 +94,7 @@ $warp-padding: 2vw;
     margin-bottom: 20px;
     color: $text-color;
     font-size: $text-size-large;
+    text-align: center;
   }
   .info {
     display: block;

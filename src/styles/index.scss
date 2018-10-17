@@ -20,7 +20,9 @@ html, body {
 	// }
 	width: 0;
 }
-
+a:-webkit-any-link {
+	color: $button-green;
+}
 .main {
 	.header {
 		position: fixed;
