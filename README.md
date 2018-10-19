@@ -26,7 +26,7 @@
 
 - 下载链接
 
-  [whu-library-seat-mobile_v1.1.2.apk](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.1.2/whu-library-seat-mobile_v1.1.2.apk)
+  [whu-library-seat-mobile_v1.2.0.apk](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.2.0/whu-library-seat-mobile_v1.2.0.apk)
 
 - 二维码：
 
@@ -38,7 +38,7 @@
 
 ### 申请软件使用权
 
-在您登录之前，软件会检查您的学号是否被记录在[这个文件](https://github.com/CS-Tao/whu-library-seat/blob/user-validation/validation.json)中，只有被记录在这个文件中的学号才能使用本软件，如果您的学号没有被记录，您可以通过邮件[联系我](http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=whucstao@qq.com)(请在邮件中注明学号、院系和姓名)
+在您登录之前，软件会检查您的学号是否被记录在[这个文件](https://github.com/CS-Tao/whu-library-seat/blob/user-validation/validation.json)中，只有被记录在这个文件中的学号(经过加密)才能使用本软件，如果您的学号(经过加密)没有被记录，您可以通过邮件[联系我](http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=whucstao@qq.com)(请在邮件中注明学号、院系和姓名)
 
 当然，因为本软件为开源软件，您可以在遵守本软件[版权声明](#版权声明)的前提下，自己构建软件并删除其中的认证代码，具体请查看[面向开发者](#面向开发者)
 
