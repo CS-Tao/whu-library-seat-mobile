@@ -18,6 +18,7 @@
     <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
+        <preference name="AppendUserAgent" value="" />
         <icon density="ldpi" src="res/icon/android/icon-36-ldpi.png" />
         <icon density="mdpi" src="res/icon/android/icon-48-mdpi.png" />
         <icon density="hdpi" src="res/icon/android/icon-72-hdpi.png" />
@@ -26,6 +27,7 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <preference name="AppendUserAgent" value="" />
     </platform>
     <plugin name="cordova-plugin-advanced-http" spec="^2.0.1" />
     <engine name="android" spec="^7.1.1" />
