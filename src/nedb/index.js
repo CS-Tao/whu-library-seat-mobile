@@ -18,4 +18,9 @@ store.clear = () => {
   db.clear()
 }
 
+if (!store.get('checkDb', false)) {
+  store.clear()
+  store.set('checkDb', 'success')
+}
+
 export default store
