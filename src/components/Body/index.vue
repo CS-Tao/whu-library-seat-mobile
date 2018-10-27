@@ -516,6 +516,7 @@ export default {
           }
         }
       }).catch((error) => {
+        this.$store.dispatch('updateTimer', 'fail')
         usageApi.grabState(this.userAccount, false, 20, `预约出现异常：${error.message}`)
       })
     },

@@ -1,43 +1,45 @@
-import axios from 'axios'
+import Vue from 'vue'
 import store from '@/nedb'
 import { Message } from 'element-ui'
 
-// create an axios instance
-const service = axios.create({
-  baseURL: store.get('baseUrl', 'https://seat.lib.whu.edu.cn:8443'),
-  timeout: 5000,
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-  },
-  withCredentials: true
-})
+Vue.cordova.plugin.http.setDataSerializer('utf8')
+Vue.cordova.plugin.http.setHeader('*', 'Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
+Vue.cordova.plugin.http.setHeader('*', 'User-Agent', '')
+Vue.cordova.plugin.http.setHeader('*', 'Accept-Encoding', '')
+Vue.cordova.plugin.http.setHeader('*', 'Accept-Charset', '')
 
-// request interceptor
-service.interceptors.request.use(config => {
-  // Do something before request is sent
-  config.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
-  config.headers['User-Agent'] = null
-  config.headers['Accept'] = null
-  config.headers['Accept-Encoding'] = null
-  config.headers['Accept-Language'] = null
-  config.headers['Referer'] = null
-  return config
-}, error => {
-  // Do something with request error
-  Promise.reject(error)
-})
+const baseURL = store.get('baseUrl', 'https://seat.lib.whu.edu.cn:8443')
 
-// respone interceptor
-service.interceptors.response.use(
-  response => response,
-  error => {
-    Message({
-      message: error.message,
-      type: 'error',
-      duration: 3000,
-      showClose: true
+const service = (options) => {
+  var sendOptions = {
+    method: options.method,
+    timeout: 5,
+    headers: options.headers ? options.headers : null,
+    params: options.params ? options.params : null,
+    data: options.data ? options.data : null
+  }
+  for (var key in sendOptions.params) {
+    sendOptions.params[key] = options.params[key].toString()
+  }
+  sendOptions.data = Object(sendOptions.data)
+  var url = baseURL + options.url
+  return new Promise((resolve, reject) => {
+    Vue.cordova.plugin.http.sendRequest(url, sendOptions, (response) => {
+      response.data = JSON.parse(response.data)
+      resolve(response)
+    }, (response) => {
+      Message({
+        message: response.error,
+        type: 'error',
+        duration: 3000,
+        showClose: true
+      })
+      var error = {
+        message: response.error
+      }
+      reject(error)
     })
-    return Promise.reject(error)
   })
+}
 
 export default service
