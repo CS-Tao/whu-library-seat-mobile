@@ -15,6 +15,12 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(config => {
   // Do something before request is sent
+  config.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
+  config.headers['User-Agent'] = null
+  config.headers['Accept'] = null
+  config.headers['Accept-Encoding'] = null
+  config.headers['Accept-Language'] = null
+  config.headers['Referer'] = null
   return config
 }, error => {
   // Do something with request error
