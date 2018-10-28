@@ -1,48 +1,44 @@
 sudo: required
 
-language: node_js
-node_js: stable
+language: android
+
+android:
+  components:
+    - tools
+    - build-tools-26.0.2
+    - android-27
+    - extra-android-m2repository
+    - extra-android-support
+    - extra-google-m2repository
+  licenses:
+    - 'android-sdk-license.*'
 
 cache:
   directories:
     - node_modules
     - cordova/node_modules
 
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8
-      - openjdk-7-jdk
-      - lib32stdc++6
-      - lib32z1
-env:
-  CXX=g++-4.8
+before_install:
+  # Add node.js dependencies.
+  - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+  - sudo apt-get install nodejs
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - source ~/.bashrc
+  - node -v && npm -v && yarn -v
 
 install:
   - yarn
   - yarn --cwd cordova
 
-before_script:
-  - mkdir android-sdk
-  - wget -P android-sdk -q https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
-  - tar -xf ./android-sdk/android-sdk_r24.4.1-linux.tgz -C ./android-sdk
-  - echo y | ./android-sdk/android-sdk-linux/tools/android update sdk --no-ui --all --filter platform-tools
-  - echo y | ./android-sdk/android-sdk-linux/tools/android update sdk --no-ui --all --filter build-tools-26.0.2
-  - echo y | ./android-sdk/android-sdk-linux/tools/android update sdk --no-ui --all --filter android-27
-  - echo y | ./android-sdk/android-sdk-linux/tools/android update sdk --no-ui --all --filter extra-android-support
-  - echo y | ./android-sdk/android-sdk-linux/tools/android update sdk --no-ui --all --filter extra-android-m2repository
-  - echo y | ./android-sdk/android-sdk-linux/tools/android update sdk --no-ui --all --filter extra-google-m2repository
-  - export ANDROID_HOME=$PWD/android-sdk/android-sdk-linux
-  - export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/26.0.2
-
 script:
   - yarn build
   - cd cordova/
-  - npm install -g cordova
+  - sudo npm install -g cordova
+  - cordova -v
   - cordova platform add android
   - cordova prepare android
+  # Fix bug of https://github.com/apache/cordova-android/issues/521 temporarily.
+  - rm -f ./platforms/android/CordovaLib/build.gradle && mv ../.travis/cordova.patforms.android.CordovaLib.build.gradle ./platforms/android/CordovaLib/build.gradle
   - cordova build android --release -- --keystore="release-key.keystore" --alias=whu-library-seat-mobile --storePassword=${STORE_PASSWORD} --password=${STORE_PASSWORD}
   - mv ./platforms/android/app/build/outputs/apk/release/app-release.apk whu-library-seat-mobile_${TRAVIS_TAG}.apk
   # - zipalign -v 4 ./platforms/android/app/build/outputs/apk/release/app-release.apk whu-library-seat-mobile_${TRAVIS_TAG}.apk
