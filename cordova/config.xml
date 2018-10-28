@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="cc.cs_tao.whu_library_seat_mobile" version="1.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="cc.cs_tao.whu_library_seat_mobile" version="1.3.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>武汉大学图书馆抢座软件</name>
     <description>
         武汉大学图书馆抢座软件 - 移动端
