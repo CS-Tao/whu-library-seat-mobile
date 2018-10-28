@@ -107,7 +107,6 @@ import historyForm from './History'
 import timerForm from './Timer'
 import libraryRestApi from '@/api/library.api'
 import usageApi from '@/api/usage.api'
-// import { ipcRenderer } from 'electron'
 
 const emptyMessage = '数据加载失败'
 const maxGrabCount = 10
@@ -482,7 +481,9 @@ export default {
               // 结束打印
               // 开始下一次抢座
               if (!this.isVip) {
-                this.sleep(100)
+                this.sleep(200)
+              } else {
+                this.sleep(120)
               }
               if (this.grabCount === arbitraryGrabCount) {
                 this.searchSeatsByTime(this.form.library, this.form.room, date, beginTime, endTime, userToken)
