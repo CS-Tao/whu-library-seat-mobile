@@ -374,7 +374,7 @@ export default {
           }
           libraryRestApi.FreeFilters(this.userToken).then((response) => {
             if (response.data.status === 'success') {
-              if (response.data.dates && response.data.dates.length > 1) {
+              if (response.data.data.dates && response.data.data.dates.length > 1) {
                 this.openCheckCount = 0
                 if (this.openCheckMessaggeHandle) {
                   this.openCheckMessaggeHandle.close()
