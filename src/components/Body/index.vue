@@ -95,7 +95,7 @@
     <announce-form v-if="hasToken&&showMode==='announce'"></announce-form>
     <user-form v-if="hasToken&&showMode==='userForm'"></user-form>
     <history-form v-if="hasToken&&showMode==='historyForm'"></history-form>
-    <timer-form v-if="hasToken&&checkReserveTime" v-model="reserveTime" :book-func="grabSeat" :login-func="login" :loginAndBookFunc="loginAndReserveSeat" @btnClick="oppointmentTimechecked($event)"></timer-form>
+    <timer-form v-if="hasToken&&checkReserveTime" v-model="reserveTime" :book-func="grabSeat" :check-open-and-book-func="checkLibraryIsOpen" :login-func="login" :loginAndBookFunc="loginAndReserveSeat" @btnClick="oppointmentTimechecked($event)"></timer-form>
 	</div>
 </template>
 
@@ -109,6 +109,8 @@ import libraryRestApi from '@/api/library.api'
 import usageApi from '@/api/usage.api'
 
 const emptyMessage = '数据加载失败'
+const maxOpenCheckCount = 20
+const openCheckInterval = 1000
 const maxGrabCount = 10
 const arbitraryGrabCount = 4
 
@@ -143,6 +145,8 @@ export default {
       reserveTime: null,
       checkReserveTime: false,
       grabCount: 0,
+      openCheckCount: 0,
+      openCheckMessaggeHandle: null,
       triedSeatIds: [],
       stopGrab: false
     }
@@ -315,6 +319,82 @@ export default {
       // 打开定时器
       this.checkReserveTime = true
     },
+    checkLibraryIsOpen () {
+      if (this.form.date === this.freeDates[1]) {
+        // 如果预约明天的，先判断是否开放
+        this.triedSeatIds = []
+        this.stopGrab = false
+        this.grabCount = 0
+        this.seatsSearched = null
+        var haveStartedGrab = false // 防止多次抢座
+        this.openCheckMessaggeHandle = this.$message({
+          type: 'info',
+          duration: '0',
+          showClose: true,
+          message: `正在 (提前) 检测是否可以预约明天的座位，最多检测 ${maxOpenCheckCount} 次，最长耗时 ${(openCheckInterval / 1000) * maxOpenCheckCount}s，请稍后...`
+        })
+        var checkOpenTimerId = setInterval(() => {
+          this.openCheckCount += 1
+          // 外部终止
+          if (this.stopGrab) {
+            this.triedSeatIds = []
+            this.stopGrab = false
+            this.grabCount = 0
+            this.seatsSearched = null
+            this.openCheckCount = 0
+            if (this.openCheckMessaggeHandle) {
+              this.openCheckMessaggeHandle.close()
+              this.openCheckMessaggeHandle = null
+            }
+            if (checkOpenTimerId) {
+              window.clearTimeout(checkOpenTimerId)
+            }
+            return
+          }
+          if (this.openCheckCount > maxOpenCheckCount) {
+            this.openCheckCount = 0
+            if (this.openCheckMessaggeHandle) {
+              this.openCheckMessaggeHandle.close()
+              this.openCheckMessaggeHandle = null
+            }
+            if (checkOpenTimerId) {
+              window.clearTimeout(checkOpenTimerId)
+            }
+            this.$store.dispatch('updateTimer', 'fail')
+            let message = `已到达检测次数上限 (${maxOpenCheckCount})：当前不能预约明天的座位。如果是定时抢座，请确保您的系统时间和网络时间相差不会过大。`
+            this.$message({
+              type: 'error',
+              duration: '0',
+              showClose: true,
+              message
+            })
+            usageApi.grabState(this.userAccount, false, 22, message)
+            return
+          }
+          libraryRestApi.FreeFilters(this.userToken).then((response) => {
+            if (response.data.status === 'success') {
+              if (response.data.dates && response.data.dates.length > 1) {
+                this.openCheckCount = 0
+                if (this.openCheckMessaggeHandle) {
+                  this.openCheckMessaggeHandle.close()
+                  this.openCheckMessaggeHandle = null
+                }
+                if (checkOpenTimerId) {
+                  window.clearTimeout(checkOpenTimerId)
+                }
+                if (!haveStartedGrab) {
+                  haveStartedGrab = true
+                  this.grabSeat()
+                }
+              }
+            }
+          })
+        }, openCheckInterval)
+      } else {
+        // 如果预约今天的，直接开始抢
+        this.grabSeat()
+      }
+    },
     grabSeat () {
       this.triedSeatIds = []
       this.stopGrab = false
@@ -351,7 +431,7 @@ export default {
           this.$message({
             type: 'success',
             duration: '1000',
-            message: '登录成功'
+            message: '(提前) 登录成功'
           })
         } else {
           usageApi.loginState(this.userInfo.account, false, 14, response.data.message)
@@ -434,7 +514,7 @@ export default {
               '<br/>位置：' + response.data.data.location + '</el-card>',
             duration: 0
           })
-          this.windowsNotification('预约成功', '请打开软件查看')
+          this.windowsNotification(`预约成功 ${response.data.data.onDate} - ${response.data.data.begin} - ${response.data.data.end}`, `位置：${response.data.data.location}`)
           usageApi.grabState(this.userAccount, true, 6)
         } else {
           if (response.data.code === 1 || response.data.code === '1') {
