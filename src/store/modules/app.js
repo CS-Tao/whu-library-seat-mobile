@@ -88,17 +88,17 @@ const app = {
       beginTime: store.get('whuSeatBeginTime', null),
       endTime: store.get('whuSeatEndTime', null),
       seatNum: store.get('whuSeatNum', null),
-      battery: store.get('whuSeatBattery', false),
-      sun: store.get('whuSeatSun', false)
+      battery: !!store.get('whuSeatBattery', false),
+      sun: !!store.get('whuSeatSun', false)
     },
     settingInfo: {
       baseUrl: store.get('baseUrl', defaultSettingInfo.baseUrl),
       oppointmentTime: new Date(store.get('oppointmentTime', defaultSettingInfo.oppointmentTime)),
       beginTime: new Date(store.get('availableBeginTime', defaultSettingInfo.beginTime)),
       endTime: new Date(store.get('availableEndTime', defaultSettingInfo.endTime)),
-      checkOpenEnable: store.get('checkOpenEnable', defaultSettingInfo.checkOpenEnable),
-      backgroundEnable: store.get('backgroundEnable', defaultSettingInfo.backgroundEnable),
-      usageRecordEnable: store.get('usageRecordEnable', defaultSettingInfo.usageRecordEnable)
+      checkOpenEnable: !!store.get('checkOpenEnable', defaultSettingInfo.checkOpenEnable),
+      backgroundEnable: !!store.get('backgroundEnable', defaultSettingInfo.backgroundEnable),
+      usageRecordEnable: !!store.get('usageRecordEnable', defaultSettingInfo.usageRecordEnable)
     },
     libraryInfo: {
       buildings: [],
