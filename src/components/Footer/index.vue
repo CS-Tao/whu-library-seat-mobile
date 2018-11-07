@@ -50,6 +50,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import gitcontentsApi from '@/api/gitcontents.api'
+import androidQrCode from '@/assets/last-android.png'
 
 export default {
   props: {
@@ -147,7 +148,7 @@ export default {
         dangerouslyUseHTMLString: true,
         message: `<el-card shadow="never" style="line-height: 30px;">
                     <p align="center" style="margin-top:20px;">
-                      <img alt="软件二维码.jpg" src="https://raw.githubusercontent.com/CS-Tao/whu-library-seat/user-validation/last-android-qr.jpg?${new Date()}" width="90%" height="90%">
+                      <img alt="安卓版二维码.jpg" src="${androidQrCode}" width="90%" height="90%">
                     </p>
                   </el-card>`,
         duration: 0

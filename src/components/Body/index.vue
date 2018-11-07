@@ -95,7 +95,7 @@
     <announce-form v-if="hasToken&&showMode==='announce'"></announce-form>
     <user-form v-if="hasToken&&showMode==='userForm'"></user-form>
     <history-form v-if="hasToken&&showMode==='historyForm'"></history-form>
-    <timer-form v-if="hasToken&&checkReserveTime" v-model="reserveTime" :book-func="grabSeat" :check-open-and-book-func="checkLibraryIsOpen" :login-func="login" :loginAndBookFunc="loginAndReserveSeat" @btnClick="oppointmentTimechecked($event)"></timer-form>
+    <timer-form v-if="hasToken&&checkReserveTime" v-model="reserveTime" :book-func="grabSeat" :check-open-and-book-func="checkLibraryIsOpen" :login-func="login" :loginAndBookFunc="loginAndReserveSeat" :is-today="form.date===freeDates[0]" @btnClick="oppointmentTimechecked($event)"></timer-form>
 	</div>
 </template>
 
