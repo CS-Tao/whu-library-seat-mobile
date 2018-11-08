@@ -1,8 +1,15 @@
 .DS_Store
 coverage
-node_modules/
 npm-debug.log
 npm-debug.log.*
 thumbs.db
-cordova/www/*
+www/*
+node_modules/
 !.gitkeep
+
+bin/*
+!/plugins
+!/plugins/android.json
+!/plugins/fetch.json
+plugins/*
+platforms/*
