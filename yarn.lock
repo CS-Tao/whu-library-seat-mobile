@@ -1926,6 +1926,11 @@ cordova-plugin-background-mode@^0.7.2:
   resolved "https://registry.yarnpkg.com/cordova-plugin-background-mode/-/cordova-plugin-background-mode-0.7.2.tgz#eaf5639c065a87231b3ecf757a6e28b101d0332f"
   integrity sha1-6vVjnAZahyMbPs91em4osQHQMy8=
 
+cordova-plugin-badge@^0.8.7:
+  version "0.8.7"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-badge/-/cordova-plugin-badge-0.8.7.tgz#fe4942aa24af6822da85c01ccce6a831afff5931"
+  integrity sha512-s+s4yusKdeJ4sMPhQs4zR3lR2UuROzSy14GFAp00pTHPiBfCtxeINSUYAZYnpuO3RGx6PPlVCwSJpVG0IdM58g==
+
 cordova-plugin-device@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/cordova-plugin-device/-/cordova-plugin-device-2.0.2.tgz#fc08f3722e67eef7b6c67bfc99a83df6add0baba"
@@ -1935,6 +1940,11 @@ cordova-plugin-file@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/cordova-plugin-file/-/cordova-plugin-file-6.0.1.tgz#49606b8c15a5688d4728f92e4a7325a061de07f5"
   integrity sha1-SWBrjBWlaI1HKPkuSnMloGHeB/U=
+
+cordova-plugin-local-notification@^0.9.0-beta.2:
+  version "0.9.0-beta.2"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-local-notification/-/cordova-plugin-local-notification-0.9.0-beta.2.tgz#e3a0b4a35d11f95bb4f1e367d9baee9909cca695"
+  integrity sha512-63n77K1pt8dnbWnNR8QWETi9Glezi1bvNHvHWmGNIOv0xCb0phZnm+Ku49BQ+omwe8Z5voMvrA4I03SYPpv38w==
 
 cordova-registry-mapper@^1.1.8:
   version "1.1.15"

@@ -6,7 +6,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 import packageInfo from '../package.json'
 
-import './api/mock'
+// import './api/mock'
 
 if (window.location.protocol === 'file:' || window.location.port === '3000') {
   var cordovaScript = document.createElement('script')

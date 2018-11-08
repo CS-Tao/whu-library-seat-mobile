@@ -515,7 +515,7 @@ export default {
               '<br/>位置：' + response.data.data.location + '</el-card>',
             duration: 0
           })
-          this.windowsNotification(`预约成功 ${response.data.data.onDate} - ${response.data.data.begin} - ${response.data.data.end}`, `位置：${response.data.data.location}`)
+          this.windowsNotification(`预约成功`, `位置：${response.data.data.location}(${response.data.data.onDate} | ${response.data.data.begin} - ${response.data.data.end})`)
           usageApi.grabState(this.userAccount, true, 6)
         } else {
           if (response.data.code === 1 || response.data.code === '1') {
@@ -661,7 +661,9 @@ export default {
       }
     },
     windowsNotification (title, message) {
-      // ipcRenderer.send('show-window-notify', title, message)
+      if (this.$cordova.pushLocalNotification) {
+        this.$cordova.pushLocalNotification(title, message)
+      }
     },
     searchSeatsByTime (buildingId, roomId, date, startTime, endTime, token) {
       libraryRestApi.SearchSeat(buildingId, roomId, date, startTime, endTime, token).then((response) => {

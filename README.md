@@ -57,11 +57,11 @@
 如果您希望在本软件的基础上继续添加新的功能，非常欢迎您向本仓库发送 Pull Request
 
 ``` bash
-# 添加项目依赖
-yarn && yarn --cwd cordova
-
 # 全局安装 cordova cli
 npm install -g cordova
+
+# 添加项目依赖
+yarn
 
 # 开发模式运行网页
 yarn dev
