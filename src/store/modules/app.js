@@ -191,6 +191,18 @@ const app = {
         state.timerInfo.status = statusEnum.working
         state.timerInfo.message = status
       }
+      // 后台模式设置
+      if (status === statusEnum.unset || status === statusEnum.success || status === statusEnum.fail) {
+        // 关闭后台模式
+        if (window.cordova.plugins.backgroundMode.isActive()) {
+          window.cordova.plugins.backgroundMode.setEnabled(false)
+        }
+      } else {
+        // 开启后台模式
+        if (!window.cordova.plugins.backgroundMode.isActive()) {
+          window.cordova.plugins.backgroundMode.setEnabled(true)
+        }
+      }
     },
     CANCEL_TIMER: (state, status) => {
       if (state.timerInfo.intervalId) {

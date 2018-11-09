@@ -24,24 +24,6 @@ Vue.appVersion = Vue.prototype.$appVersion = packageInfo.version
 Vue.openLink = Vue.prototype.$openLink = (url) => { window.open(url) }
 Vue.exitApp = Vue.prototype.$exitApp = () => { navigator.app.exitApp() }
 
-// 双击退出程序
-var beginDate = null
-document.addEventListener('backbutton', () => {
-  const delay = 2000
-  var endDate = new Date().getTime()
-  if (beginDate !== null && endDate - beginDate < delay) {
-    beginDate = endDate
-    navigator.app.exitApp()
-  } else {
-    beginDate = new Date().getTime()
-    ElementUI.Message({
-      type: 'info',
-      duration: delay,
-      message: '再次点击退出程序'
-    })
-  }
-}, false)
-
 // 加载 Vue 实例
 document.addEventListener('deviceready', function () {
   Vue.cordova = Vue.prototype.$cordova = require('./cordova').default
