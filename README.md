@@ -26,7 +26,7 @@
 
 - 下载链接
 
-  [whu-library-seat-mobile_v1.4.1.apk](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.4.1/whu-library-seat-mobile_v1.4.1.apk)
+  [whu-library-seat-mobile_v1.5.0.apk](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.5.0/whu-library-seat-mobile_v1.5.0.apk)
 
 - 二维码：
 
