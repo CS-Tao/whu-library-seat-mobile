@@ -109,7 +109,6 @@ export default {
     gitcontentsApi.checkUpdateMobile().then((response) => {
       if (response.status === 200) {
         this.checkInfo = response.data
-        console.log(JSON.stringify(this.checkInfo))
       }
     })
   },

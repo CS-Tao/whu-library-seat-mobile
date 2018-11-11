@@ -16,7 +16,6 @@ android:
 cache:
   directories:
     - node_modules
-    - cordova/node_modules
 
 before_install:
   # Add node.js dependencies.
@@ -26,22 +25,15 @@ before_install:
   - source ~/.bashrc
   - node -v && npm -v && yarn -v
 
-install:
-  - yarn
-  - yarn --cwd cordova
-
 script:
-  - yarn build
-  - cd cordova/
   - sudo npm install -g cordova
+  - yarn
+  - yarn build
   - cordova -v
-  - cordova platform add android
-  - cordova prepare android
   # Fix bug of https://github.com/apache/cordova-android/issues/521 temporarily.
-  - rm -f ./platforms/android/CordovaLib/build.gradle && mv ../.travis/cordova.patforms.android.CordovaLib.build.gradle ./platforms/android/CordovaLib/build.gradle
-  - cordova build android --release -- --keystore="release-key.keystore" --alias=whu-library-seat-mobile --storePassword=${STORE_PASSWORD} --password=${STORE_PASSWORD}
-  - mv ./platforms/android/app/build/outputs/apk/release/app-release.apk whu-library-seat-mobile_${TRAVIS_TAG}.apk
-  # - zipalign -v 4 ./platforms/android/app/build/outputs/apk/release/app-release.apk whu-library-seat-mobile_${TRAVIS_TAG}.apk
+  - rm -f ./platforms/android/CordovaLib/build.gradle && mv ./.travis/cordova.patforms.android.CordovaLib.build.gradle ./platforms/android/CordovaLib/build.gradle
+  - yarn release:android
+  - mv ./platforms/android/app/build/outputs/apk/release/app-release.apk whu-library-seat-mobile_$TRAVIS_TAG.apk
 
 deploy:
   provider: releases
@@ -49,6 +41,6 @@ deploy:
   overwrite: true
   api_key: $GH_TOKEN
   file: 
-    - "whu-library-seat-mobile_${TRAVIS_TAG}.apk"
+    - "whu-library-seat-mobile_$TRAVIS_TAG.apk"
   on:
     tags: true

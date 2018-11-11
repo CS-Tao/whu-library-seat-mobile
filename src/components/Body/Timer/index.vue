@@ -123,6 +123,24 @@ export default {
           temp.getMinutes(),
           temp.getSeconds())
       }
+    },
+    canRunInBackground () {
+      return !this.timerInfo.complete
+    }
+  },
+  watch: {
+    canRunInBackground () {
+      this.$cordova.plugins.backgroundMode.setEnabled(this.canRunInBackground)
+    //   if (this.canRunInBackground) {
+    //     // 开启后台模式
+    //     if (!this.$cordova.plugins.backgroundMode.isActive()) {
+    //       this.$cordova.plugins.backgroundMode.setEnabled(true)
+    //     }
+    //   } else {
+    //     // 关闭后台模式
+    //     if (this.$cordova.plugins.backgroundMode.isActive()) {
+    //     }
+    //   }
     }
   },
   mounted () {

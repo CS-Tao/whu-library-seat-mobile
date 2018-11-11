@@ -26,7 +26,7 @@
 
 - 下载链接
 
-  [whu-library-seat-mobile_v1.4.1.apk](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.4.1/whu-library-seat-mobile_v1.4.1.apk)
+  [whu-library-seat-mobile_v1.5.0.apk](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.5.0/whu-library-seat-mobile_v1.5.0.apk)
 
 - 二维码：
 
@@ -57,29 +57,17 @@
 如果您希望在本软件的基础上继续添加新的功能，非常欢迎您向本仓库发送 Pull Request
 
 ``` bash
-# 添加项目依赖
-yarn && yarn --cwd cordova
-
 # 全局安装 cordova cli
 npm install -g cordova
+
+# 添加项目依赖
+yarn
 
 # 开发模式运行网页
 yarn dev
 
-# 生成网页到 cordova/www 文件夹
-yarn build
-
-# 进入 Cordova 项目文件夹
-cd cordova
-
-# 添加 Android 平台
-cordova platform add android
-
-# 拷贝资源文件
-cordova prepare android
-
-# 打包应用程序(debug 版本)
-cordova build android
+# 打包 apk 包(调试)
+yarn build:android
 ```
 
 ## 版权声明
