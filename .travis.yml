@@ -27,9 +27,9 @@ before_install:
 
 script:
   - sudo npm install -g cordova
+  - cordova -v
   - yarn
   - yarn build
-  - cordova -v
   # Fix bug of https://github.com/apache/cordova-android/issues/521 temporarily.
   - rm -f ./platforms/android/CordovaLib/build.gradle && mv ./.travis/cordova.patforms.android.CordovaLib.build.gradle ./platforms/android/CordovaLib/build.gradle
   - yarn release:android

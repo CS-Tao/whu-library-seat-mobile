@@ -5,6 +5,8 @@ var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
 var opn = require('opn')
+var { say } = require('cfonts')
+var chalk = require('chalk')
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.conf')
 
@@ -26,12 +28,9 @@ var devMiddleware = require('webpack-dev-middleware')(compiler, {
 })
 
 var hotMiddleware = require('webpack-hot-middleware')(compiler)
-// force page reload when html-webpack-plugin template changes
-compiler.plugin('compilation', function (compilation) {
-  compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
-    hotMiddleware.publish({ action: 'reload' })
-    cb()
-  })
+
+compiler.plugin('watch-run', (compilation, done) => {
+  done()
 })
 
 // proxy api requests
@@ -74,16 +73,36 @@ app.get(
     }
 })
 
-module.exports = app.listen(port, function (err) {
-  if (err) {
-    console.log(err)
-    return
-  }
+function greeting () {
+  const cols = process.stdout.columns
+  let text = ''
+
+  if (cols > 104) text = 'cordova-vue'
+  else if (cols > 76) text = 'cordova-|vue'
+  else text = false
+
+  if (text) {
+    say(text, {
+      colors: ['yellow'],
+      font: 'simple3d',
+      space: false
+    })
+  } else console.log(chalk.yellow.bold('\n  cordova-vue'))
+
   var uri = 'http://localhost:' + port
-  console.log('Listening at ' + uri + '\n')
+  console.log(chalk.blue('  listening at ' + uri) + '\n')
+  console.log(chalk.hex('#3eaf7c')('  getting ready...') + '\n')
 
   // when env is testing, don't need open it
   if (process.env.NODE_ENV !== 'testing') {
     opn(uri)
   }
+}
+
+module.exports = app.listen(port, function (err) {
+  if (err) {
+    console.log(err)
+    return
+  }
+  greeting()
 })
