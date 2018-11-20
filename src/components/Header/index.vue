@@ -295,6 +295,7 @@ export default {
         if (response.data.status === 'success') {
           this.$store.dispatch('saveLibraryInfo', response.data.data)
           this.$store.dispatch('setToken', token)
+          this.$store.dispatch('updateFreeDates')
           if (this.isLover) {
             this.$message({
               iconClass: 'null',
@@ -351,8 +352,6 @@ export default {
 .form-item {
   text-align: center;
   margin: 0;
-  .input {
-  }
   .toggle-button {
     padding: 0;
     float: right;
