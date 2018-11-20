@@ -16,6 +16,12 @@ function formatDate (date, options) {
   return result
 }
 
+function getTomorrow () {
+  var tomorrow = new Date()
+  tomorrow.setDate(tomorrow.getDate() + 1)
+  return tomorrow
+}
+
 function getTodayTime (hours, minutes, seconds) {
   var today = new Date()
   today.setHours(hours)
@@ -106,7 +112,8 @@ const app = {
       dates: []
     },
     timerInfo: {...defaultTimerInfo},
-    announceViewed: true
+    announceViewed: true,
+    freeDates: [formatDate(new Date()), formatDate(getTomorrow())]
   },
   mutations: {
     SET_ACCOUNT: (state, account) => {
@@ -218,6 +225,9 @@ const app = {
     },
     SET_ANNOUNCE_VIEWED: (state, viewed) => {
       state.announceViewed = viewed
+    },
+    UPDATE_FREE_DATES: (state) => {
+      state.freeDates = [formatDate(new Date()), formatDate(getTomorrow())]
     }
   },
   actions: {
@@ -344,6 +354,9 @@ const app = {
     },
     setAnnounceViewed ({ commit }, viewed) {
       commit('SET_ANNOUNCE_VIEWED', viewed)
+    },
+    updateFreeDates ({ commit }) {
+      commit('UPDATE_FREE_DATES')
     }
   }
 }

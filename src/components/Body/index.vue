@@ -8,9 +8,9 @@
               <span>日期</span>
             </el-col>
             <el-col :span="20" :offset="1">
-              <el-select v-model="form.date" placeholder="请选择日期" class="input" @change="updateSeatsStatus()">
-                <el-option key="0" label="今天" :value="freeDates[0]"><span>今天&nbsp;&nbsp;{{freeDates[0]}}</span></el-option>
-                <el-option key="1" label="明天" :value="freeDates[1]"><span>明天&nbsp;&nbsp;{{freeDates[1]}}</span></el-option>
+              <el-select v-model="form.date" placeholder="请选择日期" class="input" @focus="$store.dispatch('updateFreeDates')" @change="updateSeatsStatus()">
+                <el-option key="0" :label="'今天' + ' - ' + getWeekDay(freeDates[0])" :value="freeDates[0]"><span>{{'今天 / ' + freeDates[0] + ' / ' + getWeekDay(freeDates[0])}}</span></el-option>
+                <el-option key="1" :label="'明天' + ' - ' + getWeekDay(freeDates[1])" :value="freeDates[1]"><span>{{'明天 / ' + freeDates[1] + ' / ' + getWeekDay(freeDates[1])}}</span></el-option>
               </el-select>
             </el-col>
           </el-row>
@@ -523,7 +523,12 @@ export default {
             // 位置不可用，如果未达抢座上限则继续抢
             usageApi.grabState(this.userAccount, false, 12, `位置不可用，如果未达抢座上限则继续抢(${seatNum}:${this.grabCount}/${maxGrabCount})：${response.data.message}`)
             this.grabCount += 1
-            var cancelCurrentBool = response.data.message === '已有1个有效预约，请在使用结束后再次进行选择' && this.grabCount < 2
+            var haveReservation = response.data.message.indexOf('已有') !== -1 &&
+              response.data.message.indexOf('预约') !== -1 &&
+              response.data.message.indexOf('再') !== -1 &&
+              response.data.message.indexOf('结束') !== -1
+            var cancelCurrentBool = haveReservation && this.grabCount < 2
+            // var cancelCurrentBool = response.data.message === '已有1个有效预约，请在使用结束后再次进行选择' && this.grabCount < 2
             var newSeatId = -1
             if (cancelCurrentBool) {
               newSeatId = seatNum
@@ -721,6 +726,34 @@ export default {
       } else {
         return 'rgb(0, 204, 0)'
       }
+    },
+    getWeekDay (dateStr) {
+      var str = '星期'
+      var week = new Date(dateStr).getDay()
+      switch (week) {
+        case 0 :
+          str += '日'
+          break
+        case 1 :
+          str += '一'
+          break
+        case 2 :
+          str += '二'
+          break
+        case 3 :
+          str += '三'
+          break
+        case 4 :
+          str += '四'
+          break
+        case 5 :
+          str += '五'
+          break
+        case 6 :
+          str += '六'
+          break
+      }
+      return str
     }
   }
 }
