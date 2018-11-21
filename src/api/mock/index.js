@@ -5,7 +5,7 @@ import libraryApi from './library.api'
 import urls from '../urls'
 
 Mock.setup({
-  timeout: '300-800'
+  timeout: '500-1000'
 })
 
 // 用户验证
