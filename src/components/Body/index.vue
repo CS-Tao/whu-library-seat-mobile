@@ -97,7 +97,16 @@
     <announce-form v-if="hasToken&&showMode==='announce'"></announce-form>
     <user-form v-if="hasToken&&showMode==='userForm'"></user-form>
     <history-form v-if="hasToken&&showMode==='historyForm'"></history-form>
-    <timer-form v-if="hasToken&&checkReserveTime" v-model="reserveTime" :book-func="grabSeat" :check-open-and-book-func="checkLibraryIsOpen" :login-func="login" :loginAndBookFunc="loginAndReserveSeat" :is-today="form.date===freeDates[0]" @btnClick="oppointmentTimechecked($event)"></timer-form>
+    <timer-form
+      v-if="hasToken&&checkReserveTime"
+      v-model="reserveTime"
+      :book-func="grabSeat"
+      :check-open-and-book-func="checkLibraryIsOpen"
+      :login-func="login"
+      :loginAndBookFunc="loginAndReserveSeat"
+      :is-today="form.date===freeDates[0]"
+      @btnClick="oppointmentTimechecked($event)">
+    </timer-form>
 	</div>
 </template>
 
@@ -109,10 +118,9 @@ import historyForm from './History'
 import timerForm from './Timer'
 import libraryRestApi from '@/api/library.api'
 import usageApi from '@/api/usage.api'
+import store from '@/nedb'
 
 const emptyMessage = '数据加载失败'
-const maxOpenCheckCount = 20
-const openCheckInterval = 1000
 const maxGrabCount = 10
 const arbitraryGrabCount = 4
 
@@ -150,7 +158,9 @@ export default {
       openCheckCount: 0,
       openCheckMessaggeHandle: null,
       triedSeatIds: [],
-      stopGrab: false
+      stopGrab: false,
+      maxOpenCheckCount: 20, // 之前检测 10 次, 之后检测 10 次
+      checkOpenPreMili: store.get('checkOpenPreMili', 10000)
     }
   },
   computed: {
@@ -200,6 +210,9 @@ export default {
         message = '无数据'
       }
       return `  ${message}  `
+    },
+    openCheckInterval () {
+      return this.checkOpenPreMili / (this.maxOpenCheckCount / 2)
     }
   },
   mounted () {
@@ -363,7 +376,7 @@ export default {
           type: 'info',
           duration: '0',
           showClose: true,
-          message: `正在 (提前) 检测是否可以预约明天的座位，最多检测 ${maxOpenCheckCount} 次，最长耗时 ${(openCheckInterval / 1000) * maxOpenCheckCount}s，请稍后...`
+          message: `正在 (提前) 检测是否可以预约明天的座位，最多检测 ${this.maxOpenCheckCount} 次，最长耗时 ${this.openCheckInterval * this.maxOpenCheckCount / 1000}s，请稍后...`
         })
         var checkOpenTimerId = setInterval(() => {
           this.openCheckCount += 1
@@ -383,7 +396,7 @@ export default {
             }
             return
           }
-          if (this.openCheckCount > maxOpenCheckCount) {
+          if (this.openCheckCount > this.maxOpenCheckCount) {
             this.openCheckCount = 0
             if (this.openCheckMessaggeHandle) {
               this.openCheckMessaggeHandle.close()
@@ -393,7 +406,7 @@ export default {
               window.clearTimeout(checkOpenTimerId)
             }
             this.$store.dispatch('updateTimer', 'fail')
-            let message = `已到达检测次数上限 (${maxOpenCheckCount})：当前不能预约明天的座位。如果是定时抢座，请确保您的系统时间和网络时间相差不会过大。`
+            let message = `已到达检测次数上限 (${this.maxOpenCheckCount})：当前不能预约明天的座位。如果是定时抢座，请确保您的系统时间和网络时间相差不会过大。`
             this.$message({
               type: 'error',
               duration: '0',
@@ -422,7 +435,7 @@ export default {
               }
             }
           })
-        }, openCheckInterval)
+        }, this.openCheckInterval)
       } else {
         // 如果预约今天的，直接开始抢
         this.grabSeat()
