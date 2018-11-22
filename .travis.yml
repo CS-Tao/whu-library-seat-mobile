@@ -16,6 +16,8 @@ android:
 cache:
   directories:
     - node_modules
+    - platforms
+    - plugins
 
 before_install:
   # Add node.js dependencies.
