@@ -118,7 +118,6 @@ import historyForm from './History'
 import timerForm from './Timer'
 import libraryRestApi from '@/api/library.api'
 import usageApi from '@/api/usage.api'
-import store from '@/nedb'
 
 const emptyMessage = '数据加载失败'
 const maxGrabCount = 10
@@ -160,7 +159,7 @@ export default {
       triedSeatIds: [],
       stopGrab: false,
       maxOpenCheckCount: 20, // 之前检测 10 次, 之后检测 10 次
-      checkOpenPreMili: store.get('checkOpenPreMili', 10000)
+      checkOpenPreMili: 10000
     }
   },
   computed: {
@@ -216,6 +215,7 @@ export default {
     }
   },
   mounted () {
+    this.checkOpenPreMili = this.settingInfo.checkOpenPreMili
     this.form = {...this.seatInfo}
     this.form.date = this.freeDates.length > 0 ? this.freeDates[0] : null
     this.form.date = this.freeDatesDefault
