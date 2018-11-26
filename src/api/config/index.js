@@ -8,6 +8,8 @@ Vue.cordova.plugin.http.setHeader('*', 'User-Agent', '')
 Vue.cordova.plugin.http.setHeader('*', 'Accept-Encoding', '')
 Vue.cordova.plugin.http.setHeader('*', 'Accept-Charset', '')
 
+const emptyMessage = '数据加载失败'
+
 const baseURL = store.get('baseUrl', 'https://seat.lib.whu.edu.cn:8443')
 
 const service = (options) => {
@@ -29,13 +31,19 @@ const service = (options) => {
         response.data = JSON.parse(response.data)
         resolve(response)
       } catch (error) {
+        Message({
+          message: emptyMessage,
+          type: 'error',
+          duration: 2000,
+          showClose: true
+        })
         reject(error)
       }
     }, (response) => {
       Message({
         message: response.error,
         type: 'error',
-        duration: 3000,
+        duration: 2000,
         showClose: true
       })
       var error = {
