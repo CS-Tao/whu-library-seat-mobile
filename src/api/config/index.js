@@ -25,8 +25,12 @@ const service = (options) => {
   var url = baseURL + options.url
   return new Promise((resolve, reject) => {
     Vue.cordova.plugin.http.sendRequest(url, sendOptions, (response) => {
-      response.data = JSON.parse(response.data)
-      resolve(response)
+      try {
+        response.data = JSON.parse(response.data)
+        resolve(response)
+      } catch (error) {
+        reject(error)
+      }
     }, (response) => {
       Message({
         message: response.error,
