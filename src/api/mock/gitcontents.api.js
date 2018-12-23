@@ -75,5 +75,33 @@ export default {
       'desktop': '1.4.0',
       'file': 'https://github.com/CS-Tao/whu-library-seat/releases/download/v1.4.0/whu-library-seat-setup-1.4.0.exe'
     }
+  },
+  blacklist: config => {
+    console.log('Mock: ' + config.url)
+    return {
+      'status': 'success',
+      'code': '0',
+      'message': '',
+      'meta': {
+        'description': '记录 GitHub id (md5) 黑名单',
+        'encryptor': 'https://www.cmd5.com/'
+      },
+      'data': [
+        {
+          'id': 'a0caf8b3ba89981ba2fe84e428f5c957',
+          'message': '使用过于频繁'
+        }
+      ]
+    }
+  },
+  ban: config => {
+    console.log('Mock: ' + config.url)
+    return {
+      'status': 'success',
+      'code': 0,
+      'locked': false,
+      'message': '正在测试，停止使用',
+      'time': '禁用时间：一天'
+    }
   }
 }

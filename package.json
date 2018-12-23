@@ -31,6 +31,7 @@
     "element-ui": "^2.4.4",
     "js-md5": "^0.7.3",
     "mockjs": "^1.0.1-beta3",
+    "socket.io-client": "^2.2.0",
     "storejs": "^1.0.20",
     "vue": "^2.5.17",
     "vue-markdown": "^2.2.4",

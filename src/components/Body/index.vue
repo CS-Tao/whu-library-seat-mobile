@@ -66,9 +66,9 @@
               <span>位置</span>
             </el-col>
             <el-col :span="14" :offset="1">
-            <el-select v-model="form.seatNum" placeholder="座位号"
-              :no-data-text="seatSelectNoDataMessage"
-              class="num">
+              <el-select v-model="form.seatNum" :placeholder="seatsForSelectIsAvailable?(seatsForSelectIsAvailable.length + ' 座可约'):'座位号'"
+                :no-data-text="seatSelectNoDataMessage"
+                class="num">
                 <el-option v-for="n in seatsForSelect.length" :key="n-1" :label="seatsForSelect[n-1].name" :value="seatsForSelect[n-1].id">
                 <span class="seat-option-left" :style="{color: getSeatColor(seatsForSelect[n-1].id)}">{{ seatsForSelect[n-1].name }}</span>
                   <span class="seat-option-right">
@@ -234,6 +234,8 @@ export default {
       this.$store.dispatch('saveSeatInfo', seatInfo)
     },
     libraryChanged () {
+      this.seats = []
+      this.roomsDetial = []
       if (this.form.library === null) { return }
       this.singleLibRooms = this.libraryInfo.rooms.filter((item) => {
         return item[2] === this.form.library
@@ -584,7 +586,7 @@ export default {
         } else {
           if (response.data.code === 1 || response.data.code === '1') {
             // 位置不可用，如果未达抢座上限则继续抢
-            usageApi.grabState(this.userAccount, false, 12, `位置不可用，如果未达抢座上限则继续抢(${seatNum}:${this.grabCount}/${maxGrabCount})：${response.data.message}`)
+            // usageApi.grabState(this.userAccount, false, 12, `位置不可用，如果未达抢座上限则继续抢(${seatNum}:${this.grabCount}/${maxGrabCount})：${response.data.message}`)
             this.grabCount += 1
             var haveReservation = response.data.message.indexOf('已有') !== -1 &&
               response.data.message.indexOf('预约') !== -1 &&

@@ -1,20 +1,26 @@
 <template>
 	<div class="footer" :class="{'footer-unlogin': !hasToken}">
-    <div class="warper flex-col" @click="openMainBody()">
+    <div class="warper flex-col" @click.stop="openMainBody()">
       <span style="cursor: default!important;">&nbsp;&nbsp;</span>
-      <el-button v-if="updateAvailable" type="primary" class="el-icon-download update-button" @click="downloadUpdate()">&nbsp;最新版本(v{{newVersion}})</el-button>
+      <el-button v-if="updateAvailable" type="primary" class="el-icon-download update-button" @click.stop="downloadUpdate()">&nbsp;最新版本(v{{newVersion}})</el-button>
       <span v-if="hasToken" class="text">{{!updateAvailable?'© 2018 CS-Tao':''}}</span>
       <span v-else class="text">{{!updateAvailable?'当前版本：v'+currentVersion:''}}</span>
-      <i v-if="!hasToken" class="operation-icon" style="margin-right: 2vw;" @click="showQRCode()">
+      <i v-show="!hasToken&&!authFormVisible&&githubUserIconUrl!==null" class="github-icon-warper" style="margin-right: 1.5vw;" @click.stop="githubIconClicked()">
+        <img class="github-icon" :src="githubUserIconUrl"/>
+      </i>
+      <i v-if="!hasToken&&(authFormVisible||githubUserIconUrl===null)" class="toggle-button" style="margin-right: 1.5vw;" @click.stop="keyIconClicked()">
+        <svg class="icon" :class="isLover?(authFormVisible?'icon-checked-red':'icon-unchecked-red'):(authFormVisible?'icon-checked':'icon-unchecked')" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M734.906278 299.765271 572.209802 299.765271c-0.25992 0-0.512676 0.022513-0.768503 0.038886L571.441299 186.185446l162.185846 0c6.78145 0 12.279674-5.498224 12.279674-12.279674l0-32.232099c0-6.78145-5.498224-12.279674-12.279674-12.279674L571.441299 129.393999 571.441299 62.758346c0-6.430456-5.498224-11.643178-12.279674-11.643178l-62.928215 0c-6.78145 0-12.279674 5.212722-12.279674 11.643178l0 502.066767c0 0.427742 0.027629 0.848321 0.074701 1.26276-83.718727 20.308535-145.890718 95.737458-145.890718 185.701422 0 105.537661 85.555561 191.092199 191.093223 191.092199 105.538685 0 191.093223-85.554538 191.093223-191.092199 0-91.043552-63.672158-167.206186-148.912541-186.41262 0.00921-0.184195 0.028653-0.36532 0.028653-0.551562L571.440275 356.517833c0.255827 0.016373 0.508583 0.038886 0.768503 0.038886l162.696476 0c6.78145 0 12.279674-5.498224 12.279674-12.279674l0-32.232099C747.185952 305.263495 741.687728 299.765271 734.906278 299.765271zM652.111596 751.789295c0 67.865667-55.016011 122.879632-122.879632 122.879632-67.864644 0-122.880655-55.014988-122.880655-122.879632 0-67.865667 55.016011-122.880655 122.880655-122.880655C597.095585 628.90864 652.111596 683.923628 652.111596 751.789295z"></path></svg>
+      </i>
+      <i v-if="!hasToken" class="operation-icon" style="margin-right: 2vw;" @click.stop="showQRCode()">
         <svg class="operation-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M62.996776 484.061694l423.162696 0L486.159472 60.900022 62.996776 60.900022 62.996776 484.061694zM168.788218 166.69044l211.580836 0 0 211.580836L168.788218 378.271276 168.788218 166.69044zM539.055193 60.900022l0 423.162696 423.162696 0L962.217888 60.900022 539.055193 60.900022zM856.426447 378.271276 644.845611 378.271276 644.845611 166.69044l211.580836 0L856.426447 378.271276zM221.682915 325.376579l105.790418 0L327.473333 219.585137 221.682915 219.585137 221.682915 325.376579zM62.996776 960.120111l423.162696 0L486.159472 536.957415 62.996776 536.957415 62.996776 960.120111zM168.788218 642.747833l211.580836 0 0 211.580836L168.788218 854.328669 168.788218 642.747833zM803.531749 219.585137 697.740308 219.585137l0 105.790418 105.790418 0L803.530726 219.585137zM539.055193 960.120111l105.790418 0L644.845611 854.329692 539.055193 854.329692 539.055193 960.120111zM644.845611 642.747833l0 211.580836 105.790418 0L750.636029 642.747833 644.845611 642.747833zM856.426447 854.329692 750.636029 854.329692 750.636029 960.120111l211.580836 0L962.216865 748.538251 856.426447 748.538251 856.426447 854.329692zM856.426447 642.747833l105.790418 0L962.216865 536.957415 856.426447 536.957415 856.426447 642.747833zM539.055193 536.957415l0 105.790418 105.790418 0L644.845611 536.957415 539.055193 536.957415zM221.682915 801.433972l105.790418 0L327.473333 695.643554 221.682915 695.643554 221.682915 801.433972z"></path></svg>
       </i>
-      <i v-if="!hasToken" class="operation-icon" style="margin-right: 2vw;" @click="openSource()">
+      <i v-if="!hasToken" class="operation-icon" style="margin-right: 2vw;" @click.stop="openSource()">
         <svg class="operation-icon" aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
       </i>
-      <i v-if="!hasToken" class="operation-icon" style="margin-right: 2vw;" @click="openDocument()">
+      <i v-if="!hasToken" class="operation-icon" style="margin-right: 2vw;" @click.stop="openDocument()">
         <svg class="operation-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M870.6 184.582c19.674 0 35.415 16.035 35.415 35.23V906.71c0 19.571-15.74 35.607-35.416 35.607H254.262c-34.515 0-66.612-7.687-90.46-19.195-31.196-15.704-50.444-39.756-50.444-68.665V166.424c0.331-28.249 19.628-52.3 50.445-67.629 23.847-11.885 55.944-19.194 90.459-19.194h616.336c19.675 0 35.416 15.705 35.416 35.23s-15.74 35.56-35.416 35.56H254.262c-23.469 0-44.14 4.527-58.694 11.553l-11.236 5.565c0.19 0 4.552 2.075 11.236 5.565 14.556 6.98 35.226 11.507 58.694 11.507h616.337"></path></svg>
       </i>
-      <i v-if="!hasToken" class="operation-icon" style="margin-right: 2vw;" @click="openFeedBack()">
+      <i v-if="!hasToken" class="operation-icon" style="margin-right: 2vw;" @click.stop="openChat()">
         <svg class="operation-icon" viewBox="0 0 1088 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M307.2 454.4c-32 0-57.6-25.6-57.6-51.2 0-32 25.6-51.2 57.6-51.2s57.6 25.6 57.6 51.2-25.6 51.2-57.6 51.2zM531.2 454.4c-32 0-57.6-25.6-57.6-51.2 0-32 25.6-51.2 57.6-51.2s57.6 25.6 57.6 51.2-25.6 51.2-57.6 51.2zM697.6 403.2c0-32 25.6-51.2 57.6-51.2s57.6 25.6 57.6 51.2c0 32-25.6 51.2-57.6 51.2s-57.6-25.6-57.6-51.2z" p-id="3053"></path><path d="M544 985.6c-12.8 0-19.2-6.4-32-12.8l-134.4-147.2H153.6c-83.2 0-153.6-64-153.6-147.2V147.2C0 64 70.4 0 153.6 0h761.6c83.2 0 153.6 64 153.6 147.2v537.6c0 83.2-70.4 147.2-153.6 147.2h-224L576 972.8c-6.4 6.4-19.2 12.8-32 12.8zM172.8 96c-38.4 0-70.4 32-70.4 70.4v492.8c0 38.4 32 70.4 70.4 70.4h224c12.8 0 19.2 6.4 32 12.8l115.2 121.6 96-115.2c6.4-6.4 19.2-12.8 32-12.8l217.6-6.4c38.4 0 70.4-32 70.4-70.4V166.4c0-38.4-32-70.4-70.4-70.4H172.8z" p-id="3054"></path></svg>
       </i>
       <i v-if="!hasToken" class="exit-button" style="margin-right: 2vw;" @click.stop="exitApp()">
@@ -70,7 +76,9 @@ export default {
     ...mapGetters([
       'userAccount',
       'hasToken',
-      'announceViewed'
+      'announceViewed',
+      'authFormVisible',
+      'githubUserIconUrl'
     ]),
     announceBtnChecked () {
       return this.bodyMode === 'announce'
@@ -119,8 +127,8 @@ export default {
     openDocument () {
       this.$openLink('https://home.cs-tao.cc/whu-library-seat')
     },
-    openFeedBack () {
-      this.$openLink('https://github.com/CS-Tao/whu-library-seat-mobile/issues/new')
+    openChat () {
+      this.$openLink('https://gitter.im/whu-library-seat/Lobby')
     },
     logout () {
       this.$emit('iconClicked', 'normal')
@@ -139,7 +147,17 @@ export default {
       this.$emit('iconClicked', this.bodyMode !== 'historyForm' ? 'history' : 'normal')
     },
     openMainBody () {
-      this.$emit('iconClicked', 'normal')
+      if (this.hasToken) {
+        this.$emit('iconClicked', 'normal')
+      } else {
+        this.$store.commit('TRIGGER_AUTH_FORM', false)
+      }
+    },
+    githubIconClicked () {
+      this.$store.commit('TRIGGER_AUTH_FORM')
+    },
+    keyIconClicked () {
+      this.$store.commit('TRIGGER_AUTH_FORM')
     },
     showQRCode () {
       this.$notify({
@@ -234,6 +252,22 @@ export default {
   }
   svg {
     fill: inherit;
+  }
+  .github-icon-warper {
+    display: flex;
+    align-items: center;
+    fill: $text-color;
+    float: right;
+    margin: auto;
+    cursor: pointer;
+    width: 25px;
+    height: 100%;
+    opacity: $button-click-opacity;
+    .github-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 2px;
+    }
   }
   .operation-icon {
     fill: $text-color;

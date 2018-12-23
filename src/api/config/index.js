@@ -15,7 +15,7 @@ const baseURL = store.get('baseUrl', 'https://seat.lib.whu.edu.cn:8443')
 const service = (options) => {
   var sendOptions = {
     method: options.method,
-    timeout: 5,
+    timeout: 8,
     headers: options.headers ? options.headers : null,
     params: options.params ? options.params : null,
     data: options.data ? options.data : null
