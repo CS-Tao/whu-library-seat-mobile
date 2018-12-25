@@ -1,5 +1,4 @@
 [![Build Status](https://www.travis-ci.com/CS-Tao/whu-library-seat-mobile.svg?branch=master)](https://www.travis-ci.com/CS-Tao/whu-library-seat-mobile)
-[![Join the chat at https://gitter.im/whu-library-seat/Lobby]
 [![Join the chat at https://gitter.im/whu-library-seat/Lobby](https://img.shields.io/badge/chat-on%20gitter-28BC99.svg)](https://gitter.im/whu-library-seat/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![license](https://img.shields.io/badge/license-none-yellow.svg)](#版权声明)
 
@@ -27,7 +26,7 @@
 
 - 下载链接
 
-  [whu-library-seat-mobile_v1.5.1.apk](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.5.1/whu-library-seat-mobile_v1.5.1.apk)
+  [whu-library-seat-mobile_v1.6.0.apk](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.6.0/whu-library-seat-mobile_v1.6.0.apk)
 
 - 二维码：
 
@@ -39,7 +38,7 @@
 
 ### 申请软件使用权
 
-> v1.8.0 已移除本功能，改为 GitHub Star 认证，具体请查看 [GitHub Star 认证](https://home.cs-tao.cc/whu-library-seat/specification/#GitHub%20Star%20认证)
+> v1.8.0 已移除本功能，改为 GitHub Star 认证，具体请查看 [GitHub Star 认证](https://home.cs-tao.cc/whu-library-seat/specification/auth.html)
 
 当然，因为本软件为开源软件，您可以在遵守本软件[版权声明](#版权声明)的前提下，自己构建软件并删除其中的认证代码，具体请查看[面向开发者](#面向开发者)
 
