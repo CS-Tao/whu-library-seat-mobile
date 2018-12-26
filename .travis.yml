@@ -5,7 +5,7 @@ language: android
 android:
   components:
     - tools
-    - build-tools-26.0.2
+    - build-tools-28.0.3
     - android-27
     - extra-android-m2repository
     - extra-android-support
@@ -16,6 +16,8 @@ android:
 cache:
   directories:
     - node_modules
+    - platforms
+    - plugins
 
 before_install:
   # Add node.js dependencies.
@@ -37,6 +39,7 @@ deploy:
   provider: releases
   skip-cleanup: true
   overwrite: true
+  draft: true
   api_key: $GH_TOKEN
   file: 
     - "whu-library-seat-mobile_$TRAVIS_TAG.apk"
