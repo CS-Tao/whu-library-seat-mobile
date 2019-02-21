@@ -12,6 +12,8 @@ cordova.pushLocalNotification = (title, text) => {
   }
 }
 
+cordova.plugins.backgroundMode.setDefaults({ silent: true })
+
 // 双击退出程序
 var beginDate = null
 document.addEventListener('backbutton', () => {
