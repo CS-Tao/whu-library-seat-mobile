@@ -28,6 +28,10 @@
 
   [whu-library-seat-mobile_v1.6.1.apk](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.6.1/whu-library-seat-mobile_v1.6.1.apk)
 
+- 备用地址
+
+  [whu-library-seat-mobile_v1.6.1.apk](https://assets.cs-tao.cc/whu-library-seat-mobile/releases/v1.6.1/whu-library-seat-mobile_v1.6.1.apk)
+
 - 二维码：
 
   ![安卓版本二维码](https://raw.githubusercontent.com/CS-Tao/whu-library-seat/user-validation/last-android-qr.jpg)
