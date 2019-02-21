@@ -12,6 +12,12 @@ cordova.pushLocalNotification = (title, text) => {
   }
 }
 
+cordova.plugins.backgroundMode.setDefaults({ silent: true })
+
+cordova.plugins.backgroundMode.on('activate', function () {
+  cordova.plugins.backgroundMode.disableWebViewOptimizations()
+})
+
 // 双击退出程序
 var beginDate = null
 document.addEventListener('backbutton', () => {
