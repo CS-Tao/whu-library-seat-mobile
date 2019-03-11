@@ -12,7 +12,12 @@ cordova.pushLocalNotification = (title, text) => {
   }
 }
 
-cordova.plugins.backgroundMode.setDefaults({ silent: true })
+// cordova.plugins.backgroundMode.setDefaults({ silent: true })
+
+cordova.plugins.backgroundMode.setDefaults({
+  title: '程序正在后台运行',
+  text: '请勿关闭软件'
+})
 
 cordova.plugins.backgroundMode.on('activate', function () {
   cordova.plugins.backgroundMode.disableWebViewOptimizations()
