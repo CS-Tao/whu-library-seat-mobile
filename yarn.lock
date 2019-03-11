@@ -1984,10 +1984,9 @@ cordova-plugin-advanced-http@^2.0.1:
   resolved "https://registry.yarnpkg.com/cordova-plugin-advanced-http/-/cordova-plugin-advanced-http-2.0.1.tgz#95161241abfdaba89ffbe95d8fa6625063f3d65c"
   integrity sha512-8BGeX39UaadZuwdbpEtEh+tcDP42dgX44kCIe7IZnK8rlKPjtS/04qTyUMFv01vWcBpzbS33/L5D484HqPAnYw==
 
-cordova-plugin-background-mode@^0.7.2:
+"cordova-plugin-background-mode@git+https://github.com/katzer/cordova-plugin-background-mode.git":
   version "0.7.2"
-  resolved "https://registry.yarnpkg.com/cordova-plugin-background-mode/-/cordova-plugin-background-mode-0.7.2.tgz#eaf5639c065a87231b3ecf757a6e28b101d0332f"
-  integrity sha1-6vVjnAZahyMbPs91em4osQHQMy8=
+  resolved "git+https://github.com/katzer/cordova-plugin-background-mode.git#0e95173de0faec26e0f131a4701bfd212418d1c0"
 
 cordova-plugin-badge@^0.8.7:
   version "0.8.7"

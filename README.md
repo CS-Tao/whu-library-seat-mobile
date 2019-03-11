@@ -26,11 +26,11 @@
 
 - 下载链接
 
-  [whu-library-seat-mobile_v1.6.2.apk](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.6.2/whu-library-seat-mobile_v1.6.2.apk)
+  [whu-library-seat-mobile_v1.6.3.apk](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.6.3/whu-library-seat-mobile_v1.6.3.apk)
 
 - 备用地址
 
-  [whu-library-seat-mobile_v1.6.2.apk](https://assets.cs-tao.cc/whu-library-seat-mobile/releases/v1.6.2/whu-library-seat-mobile_v1.6.2.apk)
+  [whu-library-seat-mobile_v1.6.3.apk](https://assets.cs-tao.cc/whu-library-seat-mobile/releases/v1.6.3/whu-library-seat-mobile_v1.6.3.apk)
 
 - 二维码：
 
@@ -78,4 +78,4 @@ yarn build:android
 
 本软件开源，但没有向开发者提供任何源码`许可证`，作者本人保留源代码的所有权利，任何组织和个人不得将本软件或源码用于商业活动
 
-Copyright © 2018 CS-Tao
+Copyright © 2019 CS-Tao

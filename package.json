@@ -1,6 +1,6 @@
 {
   "name": "whu-library-seat-mobile",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "author": "CS-Tao <whucstao@qq.com>",
   "description": "武汉大学图书馆抢座软件",
   "license": null,
@@ -23,7 +23,7 @@
     "cordova-android": "~7.1.1",
     "cordova-browser": "~5.0.4",
     "cordova-plugin-advanced-http": "^2.0.1",
-    "cordova-plugin-background-mode": "^0.7.2",
+    "cordova-plugin-background-mode": "git+https://github.com/katzer/cordova-plugin-background-mode.git",
     "cordova-plugin-badge": "^0.8.7",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-file": "^6.0.1",
