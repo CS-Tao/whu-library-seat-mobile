@@ -26,11 +26,11 @@
 
 - 下载链接
 
-  [whu-library-seat-mobile_v1.6.3.apk](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.6.3/whu-library-seat-mobile_v1.6.3.apk)
+  [whu-library-seat-mobile_v1.6.4.apk](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.6.4/whu-library-seat-mobile_v1.6.4.apk)
 
 - 备用地址
 
-  [whu-library-seat-mobile_v1.6.3.apk](https://assets.cs-tao.cc/whu-library-seat-mobile/releases/v1.6.3/whu-library-seat-mobile_v1.6.3.apk)
+  [whu-library-seat-mobile_v1.6.4.apk](https://assets.cs-tao.cc/whu-library-seat-mobile/releases/v1.6.4/whu-library-seat-mobile_v1.6.4.apk)
 
 - 二维码：
 
