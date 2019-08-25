@@ -3,7 +3,7 @@
     <div class="warper flex-col" @click.stop="openMainBody()">
       <span style="cursor: default!important;">&nbsp;&nbsp;</span>
       <el-button v-if="updateAvailable" type="primary" class="el-icon-download update-button" @click.stop="downloadUpdate()">&nbsp;最新版本(v{{newVersion}})</el-button>
-      <span v-if="hasToken" class="text">{{!updateAvailable?'© 2018 CS-Tao':''}}</span>
+      <span v-if="hasToken" class="text">{{!updateAvailable?`© ${new Date().getFullYear()} CS-Tao`:''}}</span>
       <span v-else class="text">{{!updateAvailable?'当前版本：v'+currentVersion:''}}</span>
       <i v-show="!hasToken&&!authFormVisible&&githubUserIconUrl!==null" class="github-icon-warper" style="margin-right: 1.5vw;" @click.stop="githubIconClicked()">
         <img class="github-icon" :src="githubUserIconUrl"/>
