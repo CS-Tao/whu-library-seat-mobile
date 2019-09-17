@@ -168,7 +168,8 @@ export default {
                       <img alt="安卓版二维码.jpg" src="${androidQrCode}" width="90%" height="90%">
                     </p>
                   </el-card>`,
-        duration: 0
+        duration: 0,
+        customClass: 'el-notification-center'
       })
     },
     downloadUpdate () {
