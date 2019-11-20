@@ -18,7 +18,7 @@
 
 > 以桌面端为例
 
-![软件演示](https://raw.githubusercontent.com/CS-Tao/github-content/master/contents/github/whu-library-seat/full.gif)
+![软件演示](https://home.cs-tao.cc/github-content/contents/github/whu-library-seat/full.gif)
 
 ## 下载和安装
 
@@ -50,7 +50,7 @@
 
 软件启动的时候会自动访问[这个文件](https://github.com/CS-Tao/whu-library-seat/blob/user-validation/last-mobile.json)检查更新，如果有更新，在软件的左下角会出现下载更新的按钮
 
-![图片加载失败](https://raw.githubusercontent.com/CS-Tao/github-content/master/contents/github/whu-library-seat/update.png)
+![图片加载失败](https://home.cs-tao.cc/github-content/contents/github/whu-library-seat/update.png)
 
 ## 面向开发者
 
