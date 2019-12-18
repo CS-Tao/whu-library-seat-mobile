@@ -204,8 +204,6 @@ $warp-padding: 2vw;
         .tag {
           padding-left: 10px;
           padding-right: 10px;
-          width: 96px;
-          max-width: 96px;
         }
       }
     }
