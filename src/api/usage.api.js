@@ -14,7 +14,8 @@ const appVersion = packageInfo.version
 export default {
   // 登录状态
   loginState: (account, state, code, message = null) => {
-    let usageRecordEnable = !!store.get('usageRecordEnable', true)
+    // let usageRecordEnable = store.get('usageRecordEnable', true)
+    var usageRecordEnable = false
     if (usageRecordEnable) {
       let githubid = store.get('authInfo_githubUserInfo_id', null)
       service({
@@ -35,7 +36,8 @@ export default {
   },
   // 抢座状态
   grabState: (account, state, code, message = null) => {
-    let usageRecordEnable = !!store.get('usageRecordEnable', true)
+    // let usageRecordEnable = store.get('usageRecordEnable', true)
+    var usageRecordEnable = false
     if (usageRecordEnable) {
       let githubid = store.get('authInfo_githubUserInfo_id', null)
       service({
