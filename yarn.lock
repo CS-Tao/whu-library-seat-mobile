@@ -7386,6 +7386,11 @@ vue@^2.5.17:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.17.tgz#0f8789ad718be68ca1872629832ed533589c6ada"
   integrity sha512-mFbcWoDIJi0w0Za4emyLiW72Jae0yjANHbCVquMKijcavBGypqlF7zHRgMa5k4sesdv7hv2rB4JPdZfR+TPfhQ==
 
+vuetrend@^0.3.4:
+  version "0.3.4"
+  resolved "https://registry.npm.taobao.org/vuetrend/download/vuetrend-0.3.4.tgz#35e1dafb0f7cf4d66f69e289ee7028b9e12783d9"
+  integrity sha1-NeHa+w989NZvaeKJ7nAoueEng9k=
+
 vuex@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/vuex/-/vuex-3.0.1.tgz#e761352ebe0af537d4bb755a9b9dc4be3df7efd2"
