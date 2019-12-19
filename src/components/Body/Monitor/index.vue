@@ -241,7 +241,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/styles/index.scss';
 $warp-width: 80vw;
-$warp-height: 56vh;
+$warp-height: 54vh;
 $warp-padding: 2vw;
 .dialog {
   z-index: 15;
