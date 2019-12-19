@@ -1,6 +1,6 @@
 {
   "name": "whu-library-seat-mobile",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "author": "CS-Tao <whucstao@qq.com>",
   "description": "武汉大学图书馆抢座软件",
   "license": null,
@@ -36,6 +36,7 @@
     "vue": "^2.5.17",
     "vue-markdown": "^2.2.4",
     "vue-router": "^3.0.1",
+    "vuetrend": "^0.3.4",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
