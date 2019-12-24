@@ -26,15 +26,11 @@
 
 - 下载链接
 
-  [whu-library-seat-mobile_v1.7.1.apk](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.7.1/whu-library-seat-mobile_v1.7.1.apk)
+  [![Android 版本下载链接 v1.7.1](https://img.shields.io/badge/v1.7.1-Android-limegreen.svg)](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.7.1/whu-library-seat-mobile_v1.7.1.apk)
 
-- 备用地址
+- 二维码
 
-  [whu-library-seat-mobile_v1.7.1.apk](https://assets.cs-tao.cc/whu-library-seat-mobile/releases/v1.7.1/whu-library-seat-mobile_v1.7.1.apk)
-
-- 二维码：
-
-  ![安卓版本二维码](https://raw.githubusercontent.com/CS-Tao/whu-library-seat/user-validation/last-android-qr.jpg)
+  ![Android 版本二维码](https://raw.githubusercontent.com/CS-Tao/whu-library-seat/user-validation/last-android-qr.jpg)
 
 ### 安装软件
 
@@ -48,17 +44,13 @@
 
 ### 软件更新
 
-软件启动的时候会自动访问[这个文件](https://github.com/CS-Tao/whu-library-seat/blob/user-validation/last-mobile.json)检查更新，如果有更新，在软件的左下角会出现下载更新的按钮
+软件启动的时候会自动访问[这个文件](https://github.com/CS-Tao/github-content/blob/master/contents/github/whu-library-seat/user-validation/last-mobile.json)检查更新，如果有更新，在软件的左下角会出现下载更新的按钮
 
 ![图片加载失败](https://home.cs-tao.cc/github-content/contents/github/whu-library-seat/update.png)
 
 ## 面向开发者
 
 您可以通过以下步骤自行构建本软件，但请您务必注意，本仓库并未提供任何源码`许可证`，您没有权利将源码更改后继续传播，更没有权利将本软件或源码用于商业活动
-
-如果您是自行构建而不是通过[申请软件使用权](#申请软件使用权)使用本软件，重新构建的软件只能您自己使用
-
-如果您希望在本软件的基础上继续添加新的功能，非常欢迎您向本仓库发送 Pull Request
 
 ``` bash
 # 全局安装 cordova cli
@@ -74,7 +66,14 @@ yarn dev
 yarn build:android
 ```
 
+如果您是自行构建而不是通过[申请软件使用权](#申请软件使用权)使用本软件，重新构建的软件只能您自己使用
+
+如果您希望在本软件的基础上继续添加新的功能，非常欢迎您向本仓库发送 Pull Request
+
 ## 版权声明
 
 本软件开源，但没有向开发者提供任何源码`许可证`，作者本人保留源代码的所有权利，任何组织和个人不得将本软件或源码用于商业活动
 
+## 免责声明
+
+本软件和软件源代码仅用于学习研究和技术交流，使用本软件或软件源代码造成的任何不良影响由使用者自行承担，与软件开发人员无关
