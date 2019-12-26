@@ -13,6 +13,7 @@
     "build:android": "node build/build.js && cordova prepare android && cordova build android",
     "genkey:apk": "keytool -genkey -v -keystore release-key.keystore -alias whu-library-seat-mobile -keyalg RSA -keysize 2048 -validity 10000",
     "release:android": "cordova prepare android && cordova build android --release -- --keystore=\"release-key.keystore\" --alias=whu-library-seat-mobile --storePassword=$STORE_PASSWORD --password=$STORE_PASSWORD",
+    "release:ios": "cordova prepare ios && cordova build ios --release",
     "lint": "eslint --ext .js,.vue src",
     "lint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
     "postinstall": "npm run lint:fix",

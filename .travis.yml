@@ -8,6 +8,7 @@ env:
     - TRAVIS_NODE_VERSION=8
     - ANDROID_API_LEVEL=27
     - ANDROID_BUILD_TOOLS_VERSION=28.0.3
+    - DIST_FOLDER=dist
 
 _ios: &_ios
   os: osx
@@ -35,8 +36,8 @@ matrix:
   include:
     - env: PLATFORM=android
       <<: *_android
-    - env: PLATFORM=ios
-      <<: *_ios
+    # - env: PLATFORM=ios
+    #   <<: *_ios
 
 cache:
   directories:
@@ -64,14 +65,15 @@ install:
     fi
 
 script:
+  - yarn
+  - yarn build
+  - mkdir $DIST_FOLDER
   - if [[ "$PLATFORM" == android ]]; then
-      yarn &&
-      yarn build &&
       yarn release:android &&
-      mv ./platforms/android/app/build/outputs/apk/release/app-release.apk whu-library-seat-mobile_$TRAVIS_TAG.apk;
+      mv ./platforms/android/app/build/outputs/apk/release/app-release.apk $DIST_FOLDER/whu-library-seat-mobile_$TRAVIS_TAG.apk;
     else
-      yarn &&
-      yarn build:ios;
+      yarn release:ios &&
+      mv ./platforms/ios/build/emulator/图书馆助手.app $DIST_FOLDER/whu-library-seat-mobile_$TRAVIS_TAG.app;
     fi
 
 deploy:
@@ -80,7 +82,7 @@ deploy:
   overwrite: true
   draft: true
   api_key: $GH_TOKEN
-  file:
-    - "whu-library-seat-mobile_$TRAVIS_TAG.apk"
+  file_glob: true
+  file: $DIST_FOLDER/whu-library-seat-mobile_*
   on:
     tags: true
