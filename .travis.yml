@@ -36,8 +36,8 @@ matrix:
   include:
     - env: PLATFORM=android
       <<: *_android
-    # - env: PLATFORM=ios
-    #   <<: *_ios
+    - env: PLATFORM=ios
+      <<: *_ios
 
 cache:
   directories:
@@ -47,8 +47,9 @@ cache:
 
 before_install:
   # Add yarn dependencies.
-  - if [[ "$PLATFORM" == android ]];
-      then curl -sL https://deb.nodesource.com/setup_$TRAVIS_NODE_VERSION.x | sudo -E bash - && sudo apt-get install nodejs;
+  - if [[ "$PLATFORM" == android ]]; then
+      curl -sL https://deb.nodesource.com/setup_$TRAVIS_NODE_VERSION.x | sudo -E bash - &&
+      sudo apt-get install nodejs;
     fi 
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - source ~/.bashrc
@@ -72,8 +73,9 @@ script:
       yarn release:android &&
       mv ./platforms/android/app/build/outputs/apk/release/app-release.apk $DIST_FOLDER/whu-library-seat-mobile_$TRAVIS_TAG.apk;
     else
+      rvm use system &&
       yarn release:ios &&
-      mv ./platforms/ios/build/emulator/图书馆助手.app $DIST_FOLDER/whu-library-seat-mobile_$TRAVIS_TAG.app;
+      mv "./platforms/ios/build/emulator/whu-library-seat-mobile.app" $DIST_FOLDER/whu-library-seat-mobile_$TRAVIS_TAG.app;
     fi
 
 deploy:
