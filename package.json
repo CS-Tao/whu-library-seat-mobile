@@ -13,6 +13,7 @@
     "build:android": "node build/build.js && cordova prepare android && cordova build android",
     "genkey:apk": "keytool -genkey -v -keystore release-key.keystore -alias whu-library-seat-mobile -keyalg RSA -keysize 2048 -validity 10000",
     "release:android": "cordova prepare android && cordova build android --release -- --keystore=\"release-key.keystore\" --alias=whu-library-seat-mobile --storePassword=$STORE_PASSWORD --password=$STORE_PASSWORD",
+    "release:ios": "cordova prepare ios && cordova build ios --release",
     "lint": "eslint --ext .js,.vue src",
     "lint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
     "postinstall": "npm run lint:fix",
@@ -22,12 +23,14 @@
     "axios": "^0.18.0",
     "cordova-android": "~7.1.1",
     "cordova-browser": "~5.0.4",
+    "cordova-ios": "4.5.5",
     "cordova-plugin-advanced-http": "^2.0.1",
     "cordova-plugin-background-mode": "git+https://github.com/katzer/cordova-plugin-background-mode.git",
     "cordova-plugin-badge": "^0.8.7",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-file": "^6.0.1",
     "cordova-plugin-local-notification": "^0.9.0-beta.2",
+    "cordova-plugin-whitelist": "1",
     "element-ui": "^2.4.4",
     "js-md5": "^0.7.3",
     "mockjs": "^1.0.1-beta3",
@@ -51,6 +54,7 @@
     "cfonts": "^2.2.3",
     "chalk": "^2.1.0",
     "connect-history-api-fallback": "^1.5.0",
+    "cordova-plugin-whitelist": "1",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.4",
     "escape-string-regexp": "^1.0.5",
@@ -95,12 +99,14 @@
   "cordova": {
     "platforms": [
       "android",
-      "browser"
+      "browser",
+      "ios"
     ],
     "plugins": {
       "cordova-plugin-advanced-http": {},
       "cordova-plugin-background-mode": {},
-      "cordova-plugin-local-notification": {}
+      "cordova-plugin-local-notification": {},
+      "cordova-plugin-whitelist": {}
     }
   }
 }
