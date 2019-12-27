@@ -6,6 +6,8 @@
 
 > 武汉大学图书馆抢座软件 - 移动端(Android)
 
+> IOS 解决方案：[IOS-GUIDE](./IOS-GUIDE.md)
+
 > 桌面端：[https://github.com/CS-Tao/whu-library-seat](https://github.com/CS-Tao/whu-library-seat)
 
 ## 使用说明
