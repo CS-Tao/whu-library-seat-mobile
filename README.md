@@ -28,7 +28,7 @@
 
 - 下载链接
 
-  [![Android 版本下载链接 v1.7.2](https://img.shields.io/badge/v1.7.2-Android-limegreen.svg)](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.7.2/whu-library-seat-mobile_v1.7.2.apk)
+  [![Android 版本下载链接 v1.7.3](https://img.shields.io/badge/v1.7.3-Android-limegreen.svg)](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.7.3/whu-library-seat-mobile_v1.7.3.apk)
 
 - 二维码
 
