@@ -55,7 +55,7 @@ yarn build:ios
         - IOS_PP=YOUR_IOS_PP # 更改此行
         <<: *_ios
     ```
-1. 进入 `https://travis-ci.org/<你的名字>` 或 `https://travis-ci.com/<你的名字>`，开启本项目的持续集成功能(处于部署需要，必须在 Travis 中添加加密环境变量 GH_TOKEN)
+1. 进入 `https://travis-ci.org/<你的名字>` 或 `https://travis-ci.com/<你的名字>`，开启本项目的持续集成功能(出于部署需要，必须在 Travis 中添加加密环境变量 GH_TOKEN)
 1. 在本项目的最新提交上添加 tag
 1. 等待 Travis-ci 部署，部署完成后在 `https://github.com/<你的名字>/whu-library-seat-mobile/releases` 下检查部署后的文件
 
