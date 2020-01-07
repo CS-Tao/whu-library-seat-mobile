@@ -36,11 +36,11 @@ matrix:
   include:
     - env: PLATFORM=android
       <<: *_android
-    - env:
-      - PLATFORM=ios
-      - IOS_APPLE_ID=YOUR_APPLE_ID
-      - IOS_PP=YOUR_IOS_PP
-      <<: *_ios
+    # - env:
+    #   - PLATFORM=ios
+    #   - IOS_APPLE_ID=YOUR_APPLE_ID
+    #   - IOS_PP=YOUR_IOS_PP
+    #   <<: *_ios
 
 cache:
   directories:
