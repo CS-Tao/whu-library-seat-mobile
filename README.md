@@ -34,10 +34,6 @@
 | :---: |
 | ![安卓版本二维码](https://home.cs-tao.cc/github-content/contents/github/whu-library-seat/user-validation/last-android-qr.jpg)|
 
-### 安装软件
-
-运行安装包即可
-
 ### 申请软件使用权
 
 > v1.6.0 已移除本功能，改为 GitHub Star 认证，具体请查看 [GitHub Star 认证](https://home.cs-tao.cc/whu-library-seat/specification/auth.html)
