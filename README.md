@@ -26,17 +26,13 @@
 
 ### 最新版本下载
 
-- 下载链接
+|   平台   | Android | IOS |
+|   :---   | :---: | :---:  |
+|链接| [![Android 版本下载链接 v1.7.3](https://img.shields.io/badge/v1.7.3-Android-limegreen.svg)](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.7.3/whu-library-seat-mobile_v1.7.3.apk) | [![IOS 不完全解决方案](https://img.shields.io/badge/不完全解决方案-IOS-blue.svg)](./IOS-GUIDE.md) |
 
-  [![Android 版本下载链接 v1.7.3](https://img.shields.io/badge/v1.7.3-Android-limegreen.svg)](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.7.3/whu-library-seat-mobile_v1.7.3.apk)
-
-- 二维码
-
-  ![Android 版本二维码](https://raw.githubusercontent.com/CS-Tao/whu-library-seat/user-validation/last-android-qr.jpg)
-
-### 安装软件
-
-运行安装包即可
+|本页面二维码|
+| :---: |
+| ![安卓版本二维码](https://home.cs-tao.cc/github-content/contents/github/whu-library-seat/user-validation/last-android-qr.jpg)|
 
 ### 申请软件使用权
 
