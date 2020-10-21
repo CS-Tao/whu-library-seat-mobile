@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="cc.cs_tao.whu_library_seat_mobile" version="1.7.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="cc.cs_tao.whu_library_seat_mobile" version="1.7.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>图书馆助手</name>
     <description>
-        武汉大学图书馆抢座软件
+        武汉大学图书馆助手
     </description>
     <author email="whucstao@qq.com" href="https://home.cs-tao.cc/">
         CS-Tao

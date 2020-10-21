@@ -21,6 +21,7 @@ export default {
   // 检查是否点星
   checkStared: (authToken, cursor = null) => {
     const repoName = 'whu-library-seat-mobile'
+    const firstUserCount = 10
     const maxUserCount = 100
     var query = null
     if (!cursor) {
@@ -28,7 +29,7 @@ export default {
         viewer { id login }
         repository(owner:"CS-Tao", name:"${repoName}") {
           id
-          stargazers (first: ${maxUserCount}) {
+          stargazers (first: ${firstUserCount}, orderBy: {field: STARRED_AT, direction: DESC}) {
             edges {
               cursor
               starredAt
@@ -45,7 +46,7 @@ export default {
         viewer { id login }
         repository(owner:"CS-Tao", name:"${repoName}") {
           id
-          stargazers (first: ${maxUserCount}, after: "${cursor}") {
+          stargazers (first: ${maxUserCount}, orderBy: {field: STARRED_AT, direction: DESC}, after: "${cursor}") {
             edges {
               cursor
               starredAt
