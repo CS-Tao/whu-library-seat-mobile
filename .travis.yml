@@ -1,7 +1,7 @@
 sudo: required
 
 language: node_js
-node_js: 10
+node_js: 8
 
 env:
   global:
@@ -60,11 +60,11 @@ before_install:
 
 install:
   - if [[ "$PLATFORM" == android ]]; then
-    sudo npm install -g cordova &&
+    sudo npm install -g cordova@9 &&
     cordova -v &&
     sudo chown -R 2000:2000 "/home/travis/.npm";
     else
-    npm install -g cordova &&
+    npm install -g cordova@9 &&
     cordova -v;
     fi
 
