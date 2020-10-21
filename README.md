@@ -4,7 +4,7 @@
 
 # whu-library-seat-mobile
 
-> 武汉大学图书馆抢座软件 - 移动端(Android)
+> 武汉大学图书馆助手 - 移动端(Android)
 
 > IOS 解决方案：[IOS-GUIDE.md](./IOS-GUIDE.md)
 
@@ -26,13 +26,13 @@
 
 ### 最新版本下载
 
-|   平台   | Android | IOS |
-|   :---   | :---: | :---:  |
-|链接| [![Android 版本下载链接 v1.7.3](https://img.shields.io/badge/v1.7.3-Android-limegreen.svg)](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.7.3/whu-library-seat-mobile_v1.7.3.apk) | [![IOS 不完全解决方案](https://img.shields.io/badge/不完全解决方案-IOS-blue.svg)](./IOS-GUIDE.md) |
+| 平台 |                                                                                                  Android                                                                                                   |                                                IOS                                                |
+| :--- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------: |
+| 链接 | [![Android 版本下载链接 v1.7.4](https://img.shields.io/badge/v1.7.4-Android-limegreen.svg)](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.7.4/whu-library-seat-mobile_v1.7.4.apk) | [![IOS 不完全解决方案](https://img.shields.io/badge/不完全解决方案-IOS-blue.svg)](./IOS-GUIDE.md) |
 
-|本页面二维码|
-| :---: |
-| ![安卓版本二维码](https://home.cs-tao.cc/github-content/contents/github/whu-library-seat/user-validation/last-android-qr.jpg)|
+|                                                         本页面二维码                                                          |
+| :---------------------------------------------------------------------------------------------------------------------------: |
+| ![安卓版本二维码](https://home.cs-tao.cc/github-content/contents/github/whu-library-seat/user-validation/last-android-qr.jpg) |
 
 ### 申请软件使用权
 
@@ -50,7 +50,7 @@
 
 您可以通过以下步骤自行构建本软件，但请您务必注意，本仓库并未提供任何源码`许可证`，您没有权利将源码更改后继续传播，更没有权利将本软件或源码用于商业活动
 
-``` bash
+```bash
 # 全局安装 cordova cli
 npm install -g cordova
 
