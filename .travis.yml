@@ -1,7 +1,7 @@
 sudo: required
 
 language: node_js
-node_js: 8
+node_js: 10
 
 env:
   global:
@@ -30,7 +30,7 @@ _android: &_android
       - extra-android-support
       - extra-google-m2repository
     licenses:
-      - 'android-sdk-license.*'
+      - "android-sdk-license.*"
 
 matrix:
   include:
@@ -51,21 +51,21 @@ cache:
 before_install:
   # Add yarn dependencies.
   - if [[ "$PLATFORM" == android ]]; then
-      curl -sL https://deb.nodesource.com/setup_$TRAVIS_NODE_VERSION.x | sudo -E bash - &&
-      sudo apt-get install nodejs;
-    fi 
+    curl -sL https://deb.nodesource.com/setup_$TRAVIS_NODE_VERSION.x | sudo -E bash - &&
+    sudo apt-get install nodejs;
+    fi
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - source ~/.bashrc
   - node -v && npm -v && yarn -v
 
 install:
   - if [[ "$PLATFORM" == android ]]; then
-      sudo npm install -g cordova &&
-      cordova -v &&
-      sudo chown -R 2000:2000 "/home/travis/.npm";
+    sudo npm install -g cordova &&
+    cordova -v &&
+    sudo chown -R 2000:2000 "/home/travis/.npm";
     else
-      npm install -g cordova &&
-      cordova -v;
+    npm install -g cordova &&
+    cordova -v;
     fi
 
 script:
@@ -73,12 +73,12 @@ script:
   - yarn build
   - mkdir $DIST_FOLDER
   - if [[ "$PLATFORM" == android ]]; then
-      yarn release:android &&
-      mv ./platforms/android/app/build/outputs/apk/release/app-release.apk $DIST_FOLDER/whu-library-seat-mobile_$TRAVIS_TAG.apk;
+    yarn release:android &&
+    mv ./platforms/android/app/build/outputs/apk/release/app-release.apk $DIST_FOLDER/whu-library-seat-mobile_$TRAVIS_TAG.apk;
     else
-      rvm use system &&
-      yarn release:ios &&
-      mv "./platforms/ios/build/emulator/whu-library-seat-mobile.app" $DIST_FOLDER/whu-library-seat-mobile_$TRAVIS_TAG.app;
+    rvm use system &&
+    yarn release:ios &&
+    mv "./platforms/ios/build/emulator/whu-library-seat-mobile.app" $DIST_FOLDER/whu-library-seat-mobile_$TRAVIS_TAG.app;
     fi
 
 deploy:
