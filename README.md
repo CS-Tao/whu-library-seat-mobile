@@ -28,7 +28,7 @@
 
 | 平台 |                                                                                                  Android                                                                                                   |                                                IOS                                                |
 | :--- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------: |
-| 链接 | [![Android 版本下载链接 v1.7.4](https://img.shields.io/badge/v1.7.4-Android-limegreen.svg)](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.7.4/whu-library-seat-mobile_v1.7.4.apk) | [![IOS 不完全解决方案](https://img.shields.io/badge/不完全解决方案-IOS-blue.svg)](./IOS-GUIDE.md) |
+| 链接 | [![Android 版本下载链接 v1.7.5](https://img.shields.io/badge/v1.7.5-Android-limegreen.svg)](https://github.com/CS-Tao/whu-library-seat-mobile/releases/download/v1.7.5/whu-library-seat-mobile_v1.7.5.apk) | [![IOS 不完全解决方案](https://img.shields.io/badge/不完全解决方案-IOS-blue.svg)](./IOS-GUIDE.md) |
 
 |                                                         本页面二维码                                                          |
 | :---------------------------------------------------------------------------------------------------------------------------: |

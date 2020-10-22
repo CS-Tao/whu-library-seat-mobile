@@ -13,3 +13,4 @@ bin/*
 !/plugins/fetch.json
 plugins/*
 platforms/*
+debug.log
