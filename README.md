@@ -2,7 +2,7 @@
 [![Join the chat at https://gitter.im/whu-library-seat/Lobby](https://img.shields.io/badge/chat-on%20gitter-28BC99.svg)](https://gitter.im/whu-library-seat/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![license](https://img.shields.io/badge/license-none-yellow.svg)](#版权声明)
 
-# whu-library-seat-mobile
+# 🏢 whu-library-seat-mobile
 
 > 📲 武汉大学图书馆助手 - 移动端(Android)
 
