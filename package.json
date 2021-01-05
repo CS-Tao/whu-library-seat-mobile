@@ -20,7 +20,7 @@
     "prepare": "cordova prepare"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "cordova-android": "~7.1.1",
     "cordova-browser": "~5.0.4",
     "cordova-ios": "4.5.5",
