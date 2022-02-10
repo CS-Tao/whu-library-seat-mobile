@@ -75,7 +75,7 @@
     "html-webpack-plugin": "^3.2.0",
     "http-proxy-middleware": "^0.19.0",
     "node-loader": "^0.6.0",
-    "node-sass": "^4.9.4",
+    "node-sass": "^7.0.0",
     "opn": "^5.4.0",
     "ora": "^3.0.0",
     "sass-loader": "^7.1.0",
